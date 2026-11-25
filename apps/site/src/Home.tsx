@@ -67,6 +67,12 @@ export const HomeView = View.make(
         <p class="aside">
           <a href="demo/">Open the demo on its own page</a>, which also works on a phone.
         </p>
+        <p>
+          A second recording is a real cluster of three runners on Postgres, recorded a minute after one of them was
+          killed with <code>SIGKILL</code>: <a href="demo/?recording=cluster#/cluster">open it on the cluster page</a>.
+          Storage still marked the dead runner healthy; the viewer calls it silent because its heartbeat stopped, and
+          shows its four shards now split between the other two.
+        </p>
       </section>
 
       <section id="what">
@@ -102,13 +108,21 @@ export const HomeView = View.make(
         <p>
           <strong>Cluster</strong> shows each entity type's mailbox: how many messages, how many are unprocessed, how
           many are past due and unread, and what is due next. A past-due message nobody reads is how a stalled storage
-          loop shows itself, so it is flagged at the top. For clusters with several runners it lists each runner,
-          whether it is healthy, the shards it holds, and any shard with messages that no runner holds.
+          loop shows itself, so it is flagged at the top. For clusters with several runners it lists each runner as
+          live, silent (no heartbeat for 45 seconds, which is about four missed beats) or marked unhealthy, the shards
+          it holds, and any shard with messages that no runner holds. Shard ownership comes from the shard locks table,
+          which Effect only writes when Postgres advisory locks are off; with them on (the default) the page says
+          ownership is not in storage.
         </p>
         {shot(
           "cluster.png",
           "The cluster page with mailboxes by entity type",
-          "In the recording, the durable clock whose process died is past due and unread."
+          "In the shop recording, the durable clock whose process died is past due and unread."
+        )}
+        {shot(
+          "cluster-runners.png",
+          "The cluster page for three runners, one of them silent with no shards",
+          "Three real runners, one killed: it is silent, and the other two hold its shards."
         )}
         {shot("run-phone.png", "A run page on a phone", "The same pages work at phone width.", "phone")}
       </section>
@@ -149,9 +163,28 @@ export const HomeView = View.make(
           <code>cluster</code>; <code>PORT</code> and <code>HOST</code> set where it listens.
         </p>
         <p>
-          Effect stores the trace id of every message. Set <code>VIEWER_TRACE_URL</code> to your tracing tool's URL with{" "}
-          <code>{"{traceId}"}</code> where the id goes (a Grafana Explore or Jaeger link, say) and each run page links
-          to its trace.
+          Effect stores the trace and span id of every message. Set <code>VIEWER_TRACE_URL</code> to your tracing tool's
+          URL with <code>{"{traceId}"}</code> (and, if it takes one, <code>{"{spanId}"}</code>) where the ids go, and
+          each run page links to its trace, and to the selected step's span.
+        </p>
+      </section>
+
+      <section id="alerts">
+        <h2>Alerts</h2>
+        <p>
+          The same rules that fill the needs-attention page can alert you, still without writing anything. The server
+          serves Prometheus metrics at <code>/metrics</code>: runs by status, runs needing attention by concern,
+          unprocessed and past-due messages per entity type, how long the oldest past-due message has waited, runners by
+          state and shards nobody holds. Point an alert rule at{" "}
+          <code>effect_workflow_attention{'{concern="stuck"}'}</code> or{" "}
+          <code>effect_workflow_oldest_overdue_seconds</code>.
+        </p>
+        <p>
+          Or set <code>ALERT_WEBHOOK_URL</code> and it checks every <code>ALERT_EVERY</code> (a minute by default) and
+          POSTs one JSON body per run that has newly failed, gone overdue or got stuck:{" "}
+          <code>{"{ concern, workflow, runId, why, since }"}</code>. A run is sent once while its problem lasts, and
+          again only if the problem clears and comes back. What has been sent is kept in memory, so a restart sends the
+          current problems once more.
         </p>
       </section>
 
@@ -200,10 +233,10 @@ export const HomeView = View.make(
       <section id="status">
         <h2>Status</h2>
         <p>
-          Early, and changing. It has the needs-attention page, the run list, the run page with a link to each run's
-          trace, the cluster page with mailboxes and runners, and reads only recent runs plus every run still going.
-          Next: links from each step to its own span, alerts from the needs-attention rules, and actions (interrupt,
-          resume, run again) through your app rather than the tables.
+          Early, and changing. It has the needs-attention page, the run list, the run page with links to traces and
+          spans, the cluster page with mailboxes, runners and shards, Prometheus metrics and webhook alerts, and it
+          reads only recent runs plus every run still going. It stays read-only: actions such as interrupting or
+          resuming a run belong in your app, not in a viewer.
         </p>
       </section>
     </main>

@@ -41,6 +41,7 @@ export type Attempt = {
   readonly outcome: Outcome
   readonly nextRetryAt?: number
   readonly heartbeat?: { readonly at: number; readonly detail: string }
+  readonly span?: { readonly traceId: string; readonly spanId: string }
 }
 
 export type GroupKind = "activity" | "clock" | "deferred" | "child" | "compensation" | "agent" | "queue"

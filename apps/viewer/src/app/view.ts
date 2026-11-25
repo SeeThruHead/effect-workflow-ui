@@ -13,11 +13,22 @@ import { attentionHref, clusterHref, runHref, runsHref } from "./Routes.ts"
 
 const open = (id: string): Message => Message.RequestedPage({ href: runHref(id) })
 
+const filled = (template: string, traceId: string, spanId: string): string =>
+  Str.replaceAll("{spanId}", spanId)(Str.replaceAll("{traceId}", traceId)(template))
+
 const traceLink = (recording: Recording, run: Execution | undefined): string | undefined => {
   if (recording.traceUrl === undefined) return undefined
   if (run?.traceId === undefined) return undefined
 
-  return Str.replaceAll("{traceId}", run.traceId)(recording.traceUrl)
+  return filled(recording.traceUrl, run.traceId, "")
+}
+
+const stepLink = (recording: Recording, run: Execution | undefined, selected: string): string | undefined => {
+  if (recording.traceUrl === undefined) return undefined
+  const span = run?.groups.find((group) => group.id === selected)?.attempts.at(-1)?.span
+  if (span === undefined) return undefined
+
+  return filled(recording.traceUrl, span.traceId, span.spanId)
 }
 
 const runPage = (
@@ -29,6 +40,7 @@ const runPage = (
 ) => {
   const run = runs.find((candidate) => candidate.id === id)
   const trace = traceLink(recording, run)
+  const step = stepLink(recording, run, model.selected)
 
   return RunPage(h, {
     run,
@@ -38,7 +50,8 @@ const runPage = (
     view: model.view,
     backHref: runsHref,
     ...(trace === undefined ? {} : { traceHref: trace }),
-    onSelect: (step) => Message.SelectedStep({ id: step }),
+    ...(step === undefined ? {} : { stepSpanHref: step }),
+    onSelect: (group) => Message.SelectedStep({ id: group }),
     onView: (view) => Message.ChangedHistoryView({ view }),
     onCopy: Message.Copied()
   })
@@ -72,7 +85,7 @@ const loaded = (h: HtmlBuilder<Message>, model: Model, mode: Mode, recording: Re
   if (page._tag === "Cluster")
     return ClusterPage(h, {
       mailboxes: mailboxes(recording.storage, now),
-      placement: placement(recording.storage),
+      placement: placement(recording.storage, now),
       now
     })
   if (page._tag === "Run") return runPage(h, model, recording, runs, page.id)

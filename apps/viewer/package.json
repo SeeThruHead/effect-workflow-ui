@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --port 5174",
     "build": "vite build --outDir dist/live",
-    "build:recorded": "mkdir -p recorded && cp ../sample/src/fixtures/recording.json recorded/recording.json && vite build --mode recorded --base ./ --outDir dist/recorded",
+    "build:recorded": "mkdir -p recorded && cp ../sample/src/fixtures/recording.json recorded/recording.json && cp ../sample/src/fixtures/recording-cluster.json recorded/recording-cluster.json && vite build --mode recorded --base ./ --outDir dist/recorded",
     "start": "bun src/app/server.ts",
     "typecheck": "effect-tsgo tsrs -p tsconfig.json",
     "lint": "effect-tsgo --tsrs-lint oxlint --type-aware --deny-warnings -c ../../tooling/lint/oxlintrc.json src",

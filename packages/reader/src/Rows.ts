@@ -10,7 +10,8 @@ export const MessageRow = Schema.Struct({
   processed: Schema.Boolean,
   deliverAt: Schema.NullOr(Schema.Finite),
   shardId: Schema.optionalKey(Schema.NullOr(Schema.String)),
-  traceId: Schema.optionalKey(Schema.NullOr(Schema.String))
+  traceId: Schema.optionalKey(Schema.NullOr(Schema.String)),
+  spanId: Schema.optionalKey(Schema.NullOr(Schema.String))
 })
 
 export type MessageRow = typeof MessageRow.Type

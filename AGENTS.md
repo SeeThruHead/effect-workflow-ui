@@ -16,6 +16,12 @@ directly.
 - `bun run --cwd apps/sample record`: records `.data/sample.db` into `src/fixtures/recording.json`, replayed 20
   minutes after its last write. Stop the sample while an order is in its 90 second sleep so the replay has an
   overdue run. Then `bun run --cwd apps/sample stories` regenerates the kit's Storybook fixture from it.
+- Several runners: start the sample once per runner on one Postgres `SAMPLE_DB` with `SAMPLE_RUNNER_PORT` set (a
+  socket runner with SQL runner storage), `SAMPLE_SEED=false` on all but one, `SAMPLE_SHARDS` (default 12) and
+  `SAMPLE_ADVISORY_LOCKS=false` so shard locks land in `cluster_locks`. `src/fixtures/recording-cluster.json` is
+  three runners recorded a minute after one was killed with SIGKILL (`packages/reader/tools/record.ts <url> <out> 0`).
+- The live server also serves `/metrics` (Prometheus) and, with `ALERT_WEBHOOK_URL`, POSTs alerts every
+  `ALERT_EVERY`. `VIEWER_TRACE_URL` takes `{traceId}` and `{spanId}`.
 - `bun run --cwd apps/viewer dev` (Vite, port 5174, proxies `/rpc`) with `bun run --cwd apps/viewer start`
   (`CLUSTER_DATABASE_URL`, port 4317) for the live viewer; `build` and `build:recorded` for the two builds.
 - `bun run --cwd apps/site build`: the website into `apps/site/dist`, with `apps/viewer/dist/recorded` copied in as

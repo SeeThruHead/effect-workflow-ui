@@ -156,6 +156,13 @@ const endOf = (index: Index, message: MessageRow): number | null =>
 
 type Step = { readonly name: string; readonly attempt: Attempt }
 
+const spanOf = (message: MessageRow): { readonly span?: { readonly traceId: string; readonly spanId: string } } => {
+  if (!message.traceId) return {}
+  if (!message.spanId) return {}
+
+  return { span: { traceId: message.traceId, spanId: message.spanId } }
+}
+
 const stepOf =
   (index: Index) =>
   (message: MessageRow): Option.Option<Step> =>
@@ -168,7 +175,8 @@ const stepOf =
         startedAt: at(message.id),
         endedAt: endOf(index, message),
         boot: "",
-        outcome: outcomeOfReply(replyFor(index, message))
+        outcome: outcomeOfReply(replyFor(index, message)),
+        ...spanOf(message)
       }
     }))
 

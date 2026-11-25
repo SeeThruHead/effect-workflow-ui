@@ -1,0 +1,1603 @@
+{
+  "storage": {
+    "messages": [
+      {
+        "id": "251226070441791488",
+        "requestId": "251226070441791488",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "c32f99a7e9644106208ae0ce4b82074f",
+        "tag": "activity",
+        "payload": "{\"name\":\"reserve stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:6",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "79a170b383848ca6"
+      },
+      {
+        "id": "251226238314614784",
+        "requestId": "251226238314614784",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "3e1080224d1466f16365ca5a2f552988",
+        "tag": "run",
+        "payload": "{\"orderId\":\"1795586602\",\"sku\":\"mug\",\"quantity\":2,\"card\":\"flaky\"}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:10",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "92bcd5d1507e0756"
+      },
+      {
+        "id": "251226280295403520",
+        "requestId": "251226280295403520",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "3526a79be4ffea42de4f91d1181337d4",
+        "tag": "run",
+        "payload": "{\"orderId\":\"1795586612\",\"sku\":\"mug\",\"quantity\":2,\"card\":\"declined\"}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:9",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "f51893ce4f884145"
+      },
+      {
+        "id": "251226322347495424",
+        "requestId": "251226322347495424",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "371ff57707f3e3ea6ddaf5dfc140fdd7",
+        "tag": "activity",
+        "payload": "{\"name\":\"reserve stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:5",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "f4b87c8011892f9b"
+      },
+      {
+        "id": "251226322498490368",
+        "requestId": "251226322498490368",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "371ff57707f3e3ea6ddaf5dfc140fdd7",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:5",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "dcd4da2414a51d65"
+      },
+      {
+        "id": "251226322649485312",
+        "requestId": "251226322649485312",
+        "entityType": "Workflow/-/DurableClock",
+        "entityId": "371ff57707f3e3ea6ddaf5dfc140fdd7",
+        "tag": "run",
+        "payload": "{\"name\":\"cooling-off\",\"workflowName\":\"PlaceOrder\",\"wakeUp\":1795586712879}",
+        "processed": false,
+        "deliverAt": 1795586712879,
+        "shardId": "default:5",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "4905377f8519ee40"
+      },
+      {
+        "id": "251226322276192256",
+        "requestId": "251226322276192256",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "371ff57707f3e3ea6ddaf5dfc140fdd7",
+        "tag": "run",
+        "payload": "{\"orderId\":\"1795586622\",\"sku\":\"mug\",\"quantity\":2,\"card\":\"ok\"}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:5",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "93296297b6d03198"
+      },
+      {
+        "id": "251226448226947072",
+        "requestId": "251226448226947072",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "606d685590b17d3f0732722c603eced8",
+        "tag": "run",
+        "payload": "{\"orderId\":\"1795586652\",\"sku\":\"mug\",\"quantity\":2,\"card\":\"ok\"}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:10",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "4a59268a4a199bcc"
+      },
+      {
+        "id": "251226490274844672",
+        "requestId": "251226490274844672",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "b392f3001998f7af205fa121fc2d72bd",
+        "tag": "activity",
+        "payload": "{\"name\":\"reserve stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:6",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "84c18ff7dd181e13"
+      },
+      {
+        "id": "251226490505531392",
+        "requestId": "251226490505531392",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "b392f3001998f7af205fa121fc2d72bd",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:6",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "54011e75befc7ebb"
+      },
+      {
+        "id": "251226490643943424",
+        "requestId": "251226490643943424",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "b392f3001998f7af205fa121fc2d72bd",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":2,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:6",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "b48088de1279b854"
+      },
+      {
+        "id": "251226490790744064",
+        "requestId": "251226490790744064",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "b392f3001998f7af205fa121fc2d72bd",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":3,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:6",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "cbfecf3c75675237"
+      },
+      {
+        "id": "251226490933350400",
+        "requestId": "251226490933350400",
+        "entityType": "Workflow/-/DurableClock",
+        "entityId": "b392f3001998f7af205fa121fc2d72bd",
+        "tag": "run",
+        "payload": "{\"name\":\"cooling-off\",\"workflowName\":\"PlaceOrder\",\"wakeUp\":1795586753001}",
+        "processed": false,
+        "deliverAt": 1795586753001,
+        "shardId": "default:6",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "094d5b056da696f0"
+      },
+      {
+        "id": "251226490203541504",
+        "requestId": "251226490203541504",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "b392f3001998f7af205fa121fc2d72bd",
+        "tag": "run",
+        "payload": "{\"orderId\":\"1795586662\",\"sku\":\"mug\",\"quantity\":2,\"card\":\"flaky\"}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:6",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "4bcae7d3e6d1f580"
+      },
+      {
+        "id": "251226532184330240",
+        "requestId": "251226532184330240",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "0f37e0404e60da1d9419becb8bcaad8f",
+        "tag": "run",
+        "payload": "{\"orderId\":\"1795586672\",\"sku\":\"mug\",\"quantity\":2,\"card\":\"declined\"}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:2",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "ff8272ab167cb4bf"
+      },
+      {
+        "id": "251226544511389696",
+        "requestId": "251226544511389696",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "b5f1ee506fad77a81594a6201d91a33f",
+        "tag": "deferred",
+        "payload": "{\"name\":\"shipped\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"trackingNumber\":\"TRK-1002\"}}}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:7",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "e1aabe7f2abaf070"
+      },
+      {
+        "id": "251226070251708416",
+        "requestId": "251226070251708416",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "b5f1ee506fad77a81594a6201d91a33f",
+        "tag": "run",
+        "payload": "{\"orderId\":\"1002\",\"sku\":\"desk\",\"quantity\":1,\"card\":\"flaky\"}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:7",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "bfb76d948ad75792"
+      },
+      {
+        "id": "251226574311919616",
+        "requestId": "251226574311919616",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "bc919f5789c30d36d2962108858a8d0b",
+        "tag": "activity",
+        "payload": "{\"name\":\"reserve stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:4",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "0478f543f8844d01"
+      },
+      {
+        "id": "251226574492274688",
+        "requestId": "251226574492274688",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "bc919f5789c30d36d2962108858a8d0b",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:4",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "562b51f6da6e1e3a"
+      },
+      {
+        "id": "251226574634881024",
+        "requestId": "251226574634881024",
+        "entityType": "Workflow/-/DurableClock",
+        "entityId": "bc919f5789c30d36d2962108858a8d0b",
+        "tag": "run",
+        "payload": "{\"name\":\"cooling-off\",\"workflowName\":\"PlaceOrder\",\"wakeUp\":1795586772957}",
+        "processed": false,
+        "deliverAt": 1795586772957,
+        "shardId": "default:4",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "7922e7837b08894c"
+      },
+      {
+        "id": "251226574202867712",
+        "requestId": "251226574202867712",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "bc919f5789c30d36d2962108858a8d0b",
+        "tag": "run",
+        "payload": "{\"orderId\":\"1795586682\",\"sku\":\"mug\",\"quantity\":2,\"card\":\"ok\"}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:4",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "07ef027cd2c20c51"
+      },
+      {
+        "id": "251226196296077312",
+        "requestId": "251226196296077312",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "4ea479fbff59389b2a8788b7024627fe",
+        "tag": "run",
+        "payload": "{\"orderId\":\"1795586592\",\"sku\":\"mug\",\"quantity\":2,\"card\":\"ok\"}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:1",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "ca1e8425ac285b32"
+      },
+      {
+        "id": "251226196430303232",
+        "requestId": "251226196430303232",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "4ea479fbff59389b2a8788b7024627fe",
+        "tag": "activity",
+        "payload": "{\"name\":\"reserve stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:1",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "67c474e394f5c109"
+      },
+      {
+        "id": "251226070425014272",
+        "requestId": "251226070425014272",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "b5f1ee506fad77a81594a6201d91a33f",
+        "tag": "activity",
+        "payload": "{\"name\":\"reserve stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:7",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "9c128ad05275ee31"
+      },
+      {
+        "id": "251226196606464000",
+        "requestId": "251226196606464000",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "4ea479fbff59389b2a8788b7024627fe",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:1",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "997ef57889f5b182"
+      },
+      {
+        "id": "251226070655700992",
+        "requestId": "251226070655700992",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "b5f1ee506fad77a81594a6201d91a33f",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:7",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "c2c75b66be56d4ef"
+      },
+      {
+        "id": "251226280366714880",
+        "requestId": "251226280366714880",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "3526a79be4ffea42de4f91d1181337d4",
+        "tag": "activity",
+        "payload": "{\"name\":\"reserve stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:9",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "ce6e1055b4e5b02b"
+      },
+      {
+        "id": "251226070877999104",
+        "requestId": "251226070877999104",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "c7dfc1bcc2f45da5008c41a94340fa52",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:8",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "cccfab3f8564bf0a"
+      },
+      {
+        "id": "251226280517709824",
+        "requestId": "251226280517709824",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "3526a79be4ffea42de4f91d1181337d4",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:9",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "8fd01f50c75c3a6d"
+      },
+      {
+        "id": "251226071238709248",
+        "requestId": "251226071238709248",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "b5f1ee506fad77a81594a6201d91a33f",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":2,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:7",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "763a1e53ef3953fa"
+      },
+      {
+        "id": "251226071544893440",
+        "requestId": "251226071544893440",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "c32f99a7e9644106208ae0ce4b82074f",
+        "tag": "activity",
+        "payload": "{\"name\":\"release stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:6",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "f735c87b34f304df"
+      },
+      {
+        "id": "251226079098834944",
+        "requestId": "251226079098834944",
+        "entityType": "Workflow/DailyReport",
+        "entityId": "726e31d20154cc1fb35d00b9bb47a217",
+        "tag": "activity",
+        "payload": "{\"name\":\"render report\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:6",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "350743281fadcfdf"
+      },
+      {
+        "id": "251226280672899072",
+        "requestId": "251226280672899072",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "3526a79be4ffea42de4f91d1181337d4",
+        "tag": "activity",
+        "payload": "{\"name\":\"release stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:9",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "011016a7ffb77da6"
+      },
+      {
+        "id": "251226154315288576",
+        "requestId": "251226154315288576",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "347a53ec0aed3bbde01d2aa29d9887f4",
+        "tag": "run",
+        "payload": "{\"orderId\":\"1795586582\",\"sku\":\"mug\",\"quantity\":2,\"card\":\"declined\"}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:3",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "0a0d892238978de7"
+      },
+      {
+        "id": "251226448294060032",
+        "requestId": "251226448294060032",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "606d685590b17d3f0732722c603eced8",
+        "tag": "activity",
+        "payload": "{\"name\":\"reserve stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:10",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "6ebabcd3b85d8b3c"
+      },
+      {
+        "id": "251226448436666368",
+        "requestId": "251226448436666368",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "606d685590b17d3f0732722c603eced8",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:10",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "af3a0436d5487474"
+      },
+      {
+        "id": "251226448575078400",
+        "requestId": "251226448575078400",
+        "entityType": "Workflow/-/DurableClock",
+        "entityId": "606d685590b17d3f0732722c603eced8",
+        "tag": "run",
+        "payload": "{\"name\":\"cooling-off\",\"workflowName\":\"PlaceOrder\",\"wakeUp\":1795586742902}",
+        "processed": false,
+        "deliverAt": 1795586742902,
+        "shardId": "default:10",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "184282b94c0485a3"
+      },
+      {
+        "id": "251226196757458944",
+        "requestId": "251226196757458944",
+        "entityType": "Workflow/-/DurableClock",
+        "entityId": "4ea479fbff59389b2a8788b7024627fe",
+        "tag": "run",
+        "payload": "{\"name\":\"cooling-off\",\"workflowName\":\"PlaceOrder\",\"wakeUp\":1795586682863}",
+        "processed": true,
+        "deliverAt": 1795586682863,
+        "shardId": "default:1",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "4ab7dec77d8cb632"
+      },
+      {
+        "id": "251226485682085888",
+        "requestId": "251226485682085888",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "eeb2675e151ca34b70f5d488d910fdf3",
+        "tag": "activity",
+        "payload": "{\"name\":\"reserve stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:2",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "de228f0ce446dfa3"
+      },
+      {
+        "id": "251226485988270080",
+        "requestId": "251226485988270080",
+        "entityType": "Warehouse",
+        "entityId": "main",
+        "tag": "Ship",
+        "payload": "{\"orderId\":\"1001\",\"token\":\"WyJQbGFjZU9yZGVyIiwiYzdkZmMxYmNjMmY0NWRhNTAwOGM0MWE5NDM0MGZhNTIiLCJzaGlwcGVkIl0\"}",
+        "processed": false,
+        "deliverAt": null,
+        "shardId": "default:11",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "c479ae22c45c821a"
+      },
+      {
+        "id": "251226485891801089",
+        "requestId": "251226485891801089",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "c7dfc1bcc2f45da5008c41a94340fa52",
+        "tag": "activity",
+        "payload": "{\"name\":\"request shipment\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:8",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "0c3c991245d2ec87"
+      },
+      {
+        "id": "251226070243319808",
+        "requestId": "251226070243319808",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "c7dfc1bcc2f45da5008c41a94340fa52",
+        "tag": "run",
+        "payload": "{\"orderId\":\"1001\",\"sku\":\"lamp\",\"quantity\":1,\"card\":\"ok\"}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:8",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "4b7f9f05924a2548"
+      },
+      {
+        "id": "251226486328008704",
+        "requestId": "251226486328008704",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "eeb2675e151ca34b70f5d488d910fdf3",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":2,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:2",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "02a335de8f999971"
+      },
+      {
+        "id": "251226112271585280",
+        "requestId": "251226112271585280",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "0005d977faba95acb1da9f8ec13f0eeb",
+        "tag": "run",
+        "payload": "{\"orderId\":\"1795586572\",\"sku\":\"mug\",\"quantity\":2,\"card\":\"flaky\"}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:7",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "97bd90276633cae3"
+      },
+      {
+        "id": "251226238385922048",
+        "requestId": "251226238385922048",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "3e1080224d1466f16365ca5a2f552988",
+        "tag": "activity",
+        "payload": "{\"name\":\"reserve stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:10",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "5340722070df6d3d"
+      },
+      {
+        "id": "251226238536916992",
+        "requestId": "251226238536916992",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "3e1080224d1466f16365ca5a2f552988",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:10",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "ecba0c5edc12b038"
+      },
+      {
+        "id": "251226238683717632",
+        "requestId": "251226238683717632",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "3e1080224d1466f16365ca5a2f552988",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":2,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:10",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "fe49f9a406c161f9"
+      },
+      {
+        "id": "251226070433402880",
+        "requestId": "251226070433402880",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "c7dfc1bcc2f45da5008c41a94340fa52",
+        "tag": "activity",
+        "payload": "{\"name\":\"reserve stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:8",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "cdeafa79871bc6db"
+      },
+      {
+        "id": "251226070260097024",
+        "requestId": "251226070260097024",
+        "entityType": "Workflow/Reconcile",
+        "entityId": "192855a134991f4cb2d900df427d2738",
+        "tag": "run",
+        "payload": "{\"ledger\":\"nightly-2026-11-20\"}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:5",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "acc54ac874fff549"
+      },
+      {
+        "id": "251226070260097025",
+        "requestId": "251226070260097025",
+        "entityType": "Workflow/ApproveRefund",
+        "entityId": "f6ba36b2623f9566d11e6bf2349b281f",
+        "tag": "run",
+        "payload": "{\"refundId\":\"r-77\",\"amount\":240}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:11",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "2da7ee945d36cddf"
+      },
+      {
+        "id": "251226238826323968",
+        "requestId": "251226238826323968",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "3e1080224d1466f16365ca5a2f552988",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":3,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:10",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "383c49b725a1f239"
+      },
+      {
+        "id": "251226071674916864",
+        "requestId": "251226071674916864",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "b5f1ee506fad77a81594a6201d91a33f",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":3,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:7",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "7c5b098fb9faaafc"
+      },
+      {
+        "id": "251226070454374400",
+        "requestId": "251226070454374400",
+        "entityType": "Workflow/DailyReport",
+        "entityId": "726e31d20154cc1fb35d00b9bb47a217",
+        "tag": "activity",
+        "payload": "{\"name\":\"gather orders\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:6",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "0e662fbf8257eae5"
+      },
+      {
+        "id": "251226238964736000",
+        "requestId": "251226238964736000",
+        "entityType": "Workflow/-/DurableClock",
+        "entityId": "3e1080224d1466f16365ca5a2f552988",
+        "tag": "run",
+        "payload": "{\"name\":\"cooling-off\",\"workflowName\":\"PlaceOrder\",\"wakeUp\":1795586692927}",
+        "processed": false,
+        "deliverAt": 1795586692927,
+        "shardId": "default:10",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "ea881ef8790e2b63"
+      },
+      {
+        "id": "251226071939158016",
+        "requestId": "251226071939158016",
+        "entityType": "Workflow/-/DurableClock",
+        "entityId": "b5f1ee506fad77a81594a6201d91a33f",
+        "tag": "run",
+        "payload": "{\"name\":\"cooling-off\",\"workflowName\":\"PlaceOrder\",\"wakeUp\":1795586653105}",
+        "processed": true,
+        "deliverAt": 1795586653105,
+        "shardId": "default:7",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "07178cd7ce81c1b1"
+      },
+      {
+        "id": "251226460205883392",
+        "requestId": "251226460205883392",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "b5f1ee506fad77a81594a6201d91a33f",
+        "tag": "deferred",
+        "payload": "{\"name\":\"DurableClock/cooling-off\",\"exit\":{\"_tag\":\"Success\",\"value\":null}}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:7",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "8f5fb4e6a534422f"
+      },
+      {
+        "id": "251226460423987201",
+        "requestId": "251226460423987201",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "b5f1ee506fad77a81594a6201d91a33f",
+        "tag": "activity",
+        "payload": "{\"name\":\"request shipment\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:7",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "4835a0a123b52731"
+      },
+      {
+        "id": "251226071490367488",
+        "requestId": "251226071490367488",
+        "entityType": "Workflow/-/DurableClock",
+        "entityId": "c7dfc1bcc2f45da5008c41a94340fa52",
+        "tag": "run",
+        "payload": "{\"name\":\"cooling-off\",\"workflowName\":\"PlaceOrder\",\"wakeUp\":1795586652998}",
+        "processed": true,
+        "deliverAt": 1795586652998,
+        "shardId": "default:8",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "2c90280d36594b17"
+      },
+      {
+        "id": "251226485677891584",
+        "requestId": "251226485677891584",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "c7dfc1bcc2f45da5008c41a94340fa52",
+        "tag": "deferred",
+        "payload": "{\"name\":\"DurableClock/cooling-off\",\"exit\":{\"_tag\":\"Success\",\"value\":null}}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:8",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "f7ae0239f6163a03"
+      },
+      {
+        "id": "251226460516261888",
+        "requestId": "251226460516261888",
+        "entityType": "Warehouse",
+        "entityId": "main",
+        "tag": "Ship",
+        "payload": "{\"orderId\":\"1002\",\"token\":\"WyJQbGFjZU9yZGVyIiwiYjVmMWVlNTA2ZmFkNzdhODE1OTRhNjIwMWQ5MWEzM2YiLCJzaGlwcGVkIl0\"}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:11",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "2809b4c99a5d48a7"
+      },
+      {
+        "id": "251226406233575424",
+        "requestId": "251226406233575424",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "08478022b3c201abe0614c969041551b",
+        "tag": "run",
+        "payload": "{\"orderId\":\"1795586642\",\"sku\":\"mug\",\"quantity\":2,\"card\":\"declined\"}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:12",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "46f29fd1a98ab451"
+      },
+      {
+        "id": "251226532293386240",
+        "requestId": "251226532293386240",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "0f37e0404e60da1d9419becb8bcaad8f",
+        "tag": "activity",
+        "payload": "{\"name\":\"reserve stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:2",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "d83da9884c91f93f"
+      },
+      {
+        "id": "251226070458568704",
+        "requestId": "251226070458568704",
+        "entityType": "Workflow/ApproveRefund",
+        "entityId": "f6ba36b2623f9566d11e6bf2349b281f",
+        "tag": "activity",
+        "payload": "{\"name\":\"check refund\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:11",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "5306c42144aaee7f"
+      },
+      {
+        "id": "251226070907359232",
+        "requestId": "251226070907359232",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "c32f99a7e9644106208ae0ce4b82074f",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:6",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "16928f1d1dd6beaa"
+      },
+      {
+        "id": "251226070255902720",
+        "requestId": "251226070255902720",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "c32f99a7e9644106208ae0ce4b82074f",
+        "tag": "run",
+        "payload": "{\"orderId\":\"1003\",\"sku\":\"chair\",\"quantity\":4,\"card\":\"declined\"}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:6",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "055b62e9c0ef3b81"
+      },
+      {
+        "id": "251226486067961856",
+        "requestId": "251226486067961856",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "eeb2675e151ca34b70f5d488d910fdf3",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:2",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "0fbdeb5d3df83498"
+      },
+      {
+        "id": "251226364252786688",
+        "requestId": "251226364252786688",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "eeb2675e151ca34b70f5d488d910fdf3",
+        "tag": "run",
+        "payload": "{\"orderId\":\"1795586632\",\"sku\":\"mug\",\"quantity\":2,\"card\":\"flaky\"}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:2",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "7b8c3627d7383a6c"
+      },
+      {
+        "id": "251226502119563264",
+        "requestId": "251226502119563264",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "0005d977faba95acb1da9f8ec13f0eeb",
+        "tag": "deferred",
+        "payload": "{\"name\":\"DurableClock/cooling-off\",\"exit\":{\"_tag\":\"Success\",\"value\":null}}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:7",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "359068a0a82f83c4"
+      },
+      {
+        "id": "251226502429941760",
+        "requestId": "251226502429941760",
+        "entityType": "Warehouse",
+        "entityId": "main",
+        "tag": "Ship",
+        "payload": "{\"orderId\":\"1795586572\",\"token\":\"WyJQbGFjZU9yZGVyIiwiMDAwNWQ5NzdmYWJhOTVhY2IxZGE5ZjhlYzEzZjBlZWIiLCJzaGlwcGVkIl0\"}",
+        "processed": false,
+        "deliverAt": null,
+        "shardId": "default:11",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "307820d52e17c15a"
+      },
+      {
+        "id": "251226502346055681",
+        "requestId": "251226502346055681",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "0005d977faba95acb1da9f8ec13f0eeb",
+        "tag": "activity",
+        "payload": "{\"name\":\"request shipment\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:7",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "a9750187e53038b9"
+      },
+      {
+        "id": "251226532440186880",
+        "requestId": "251226532440186880",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "0f37e0404e60da1d9419becb8bcaad8f",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:2",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "338e0203c4bd1834"
+      },
+      {
+        "id": "251226532582793216",
+        "requestId": "251226532582793216",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "0f37e0404e60da1d9419becb8bcaad8f",
+        "tag": "activity",
+        "payload": "{\"name\":\"release stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:2",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "8dce42c8b0d4aa0b"
+      },
+      {
+        "id": "251226406317465600",
+        "requestId": "251226406317465600",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "08478022b3c201abe0614c969041551b",
+        "tag": "activity",
+        "payload": "{\"name\":\"reserve stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:12",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "0357e7eeda9e06bb"
+      },
+      {
+        "id": "251226070445985792",
+        "requestId": "251226070445985792",
+        "entityType": "Workflow/Reconcile",
+        "entityId": "192855a134991f4cb2d900df427d2738",
+        "tag": "activity",
+        "payload": "{\"name\":\"load ledger\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:5",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "b456f5858236c012"
+      },
+      {
+        "id": "251226070255902721",
+        "requestId": "251226070255902721",
+        "entityType": "Workflow/DailyReport",
+        "entityId": "726e31d20154cc1fb35d00b9bb47a217",
+        "tag": "run",
+        "payload": "{\"day\":\"2026-11-20\"}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:6",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "46c88fc446c5d7da"
+      },
+      {
+        "id": "251226406468460544",
+        "requestId": "251226406468460544",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "08478022b3c201abe0614c969041551b",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:12",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "dbbda7925b310fa9"
+      },
+      {
+        "id": "251226112422584320",
+        "requestId": "251226112422584320",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "0005d977faba95acb1da9f8ec13f0eeb",
+        "tag": "activity",
+        "payload": "{\"name\":\"reserve stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:7",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "994cbc2826f87da8"
+      },
+      {
+        "id": "251226406623649792",
+        "requestId": "251226406623649792",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "08478022b3c201abe0614c969041551b",
+        "tag": "activity",
+        "payload": "{\"name\":\"release stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:12",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "3752483f8773a421"
+      },
+      {
+        "id": "251226112602939392",
+        "requestId": "251226112602939392",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "0005d977faba95acb1da9f8ec13f0eeb",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:7",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "76e4bd609c34dc7b"
+      },
+      {
+        "id": "251226112758128640",
+        "requestId": "251226112758128640",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "0005d977faba95acb1da9f8ec13f0eeb",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":2,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:7",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "34f1f956d56eb71d"
+      },
+      {
+        "id": "251226486487392256",
+        "requestId": "251226486487392256",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "eeb2675e151ca34b70f5d488d910fdf3",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":3,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:2",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "bbc657cce1a8612d"
+      },
+      {
+        "id": "251226486629998592",
+        "requestId": "251226486629998592",
+        "entityType": "Workflow/-/DurableClock",
+        "entityId": "eeb2675e151ca34b70f5d488d910fdf3",
+        "tag": "run",
+        "payload": "{\"name\":\"cooling-off\",\"workflowName\":\"PlaceOrder\",\"wakeUp\":1795586751975}",
+        "processed": false,
+        "deliverAt": 1795586751975,
+        "shardId": "default:2",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "0aad3bcfbb0f1686"
+      },
+      {
+        "id": "251226112909123584",
+        "requestId": "251226112909123584",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "0005d977faba95acb1da9f8ec13f0eeb",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":3,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:7",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "ee502dab285bcc02"
+      },
+      {
+        "id": "251226113068507136",
+        "requestId": "251226113068507136",
+        "entityType": "Workflow/-/DurableClock",
+        "entityId": "0005d977faba95acb1da9f8ec13f0eeb",
+        "tag": "run",
+        "payload": "{\"name\":\"cooling-off\",\"workflowName\":\"PlaceOrder\",\"wakeUp\":1795586662911}",
+        "processed": true,
+        "deliverAt": 1795586662911,
+        "shardId": "default:7",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "27effd67005655fc"
+      },
+      {
+        "id": "251226154386595840",
+        "requestId": "251226154386595840",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "347a53ec0aed3bbde01d2aa29d9887f4",
+        "tag": "activity",
+        "payload": "{\"name\":\"reserve stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:3",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "22a2baa2211136a0"
+      },
+      {
+        "id": "251226154533396480",
+        "requestId": "251226154533396480",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "347a53ec0aed3bbde01d2aa29d9887f4",
+        "tag": "activity",
+        "payload": "{\"name\":\"charge card\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:3",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "b39d2ec8e1bc08ac"
+      },
+      {
+        "id": "251226154684391424",
+        "requestId": "251226154684391424",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "347a53ec0aed3bbde01d2aa29d9887f4",
+        "tag": "activity",
+        "payload": "{\"name\":\"release stock\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:3",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "0a5643c3c01680b7"
+      },
+      {
+        "id": "251226586030809088",
+        "requestId": "251226586030809088",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "4ea479fbff59389b2a8788b7024627fe",
+        "tag": "deferred",
+        "payload": "{\"name\":\"DurableClock/cooling-off\",\"exit\":{\"_tag\":\"Success\",\"value\":null}}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:1",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "5ce714950219d993"
+      },
+      {
+        "id": "251226586341187584",
+        "requestId": "251226586341187584",
+        "entityType": "Warehouse",
+        "entityId": "main",
+        "tag": "Ship",
+        "payload": "{\"orderId\":\"1795586592\",\"token\":\"WyJQbGFjZU9yZGVyIiwiNGVhNDc5ZmJmZjU5Mzg5YjJhODc4OGI3MDI0NjI3ZmUiLCJzaGlwcGVkIl0\"}",
+        "processed": false,
+        "deliverAt": null,
+        "shardId": "default:11",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "bdb1a232cc51404a"
+      },
+      {
+        "id": "251226586244718592",
+        "requestId": "251226586244718592",
+        "entityType": "Workflow/PlaceOrder",
+        "entityId": "4ea479fbff59389b2a8788b7024627fe",
+        "tag": "activity",
+        "payload": "{\"name\":\"request shipment\",\"attempt\":1,\"withTransaction\":false}",
+        "processed": true,
+        "deliverAt": null,
+        "shardId": "default:1",
+        "traceId": "fee5bd7f248d9dfd63b1f3213e0dc308",
+        "spanId": "f8ad6f49d92f1934"
+      }
+    ],
+    "replies": [
+      {
+        "id": "251226070592786432",
+        "requestId": "251226070425014272",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"reservationId\":\"res-1002\",\"sku\":\"desk\",\"quantity\":1}}}}"
+      },
+      {
+        "id": "251226070815084544",
+        "requestId": "251226070433402880",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"reservationId\":\"res-1001\",\"sku\":\"lamp\",\"quantity\":1}}}}"
+      },
+      {
+        "id": "251226070844444672",
+        "requestId": "251226070441791488",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"reservationId\":\"res-1003\",\"sku\":\"chair\",\"quantity\":4}}}}"
+      },
+      {
+        "id": "251226070898970624",
+        "requestId": "251226070445985792",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Die\",\"defect\":{\"name\":\"Error\",\"message\":\"ledger nightly-2026-11-20 is corrupt at line 4812\"}}]}}}"
+      },
+      {
+        "id": "251226071003828224",
+        "requestId": "251226070458568704",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"refundId\":\"r-77\",\"needsApproval\":true}}}}"
+      },
+      {
+        "id": "251226071117074432",
+        "requestId": "251226070655700992",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"CardTimeout\",\"attempt\":1}}]}}}"
+      },
+      {
+        "id": "251226071406481408",
+        "requestId": "251226070260097024",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Die\",\"defect\":{\"name\":\"Error\",\"message\":\"ledger nightly-2026-11-20 is corrupt at line 4812\"}}]}}}"
+      },
+      {
+        "id": "251226071435841536",
+        "requestId": "251226070877999104",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"chargeId\":\"ch-1001\"}}}}"
+      },
+      {
+        "id": "251226071486173184",
+        "requestId": "251226070907359232",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"CardDeclined\",\"orderId\":\"1003\"}}]}}}"
+      },
+      {
+        "id": "251226071565864960",
+        "requestId": "251226070260097025",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Suspended\",\"cause\":null}}"
+      },
+      {
+        "id": "251226071620390912",
+        "requestId": "251226071238709248",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"CardTimeout\",\"attempt\":2}}]}}}"
+      },
+      {
+        "id": "251226071804940288",
+        "requestId": "251226071544893440",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"released\":\"res-1003\"}}}}"
+      },
+      {
+        "id": "251226071884632064",
+        "requestId": "251226071674916864",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"chargeId\":\"ch-1002\"}}}}"
+      },
+      {
+        "id": "251226071964323840",
+        "requestId": "251226070255902720",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"OrderFailed\",\"orderId\":\"1003\",\"reason\":\"the card for order 1003 was declined\"}}]}}}"
+      },
+      {
+        "id": "251226079061086208",
+        "requestId": "251226070454374400",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"day\":\"2026-11-20\",\"orders\":42}}}}"
+      },
+      {
+        "id": "251226083414773760",
+        "requestId": "251226079098834944",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"orders\":42,\"revenue\":819}}}}"
+      },
+      {
+        "id": "251226083498659840",
+        "requestId": "251226070255902721",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"orders\":42,\"revenue\":819}}}}"
+      },
+      {
+        "id": "251226112560996352",
+        "requestId": "251226112422584320",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"reservationId\":\"res-1795586572\",\"sku\":\"mug\",\"quantity\":2}}}}"
+      },
+      {
+        "id": "251226112724574208",
+        "requestId": "251226112602939392",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"CardTimeout\",\"attempt\":1}}]}}}"
+      },
+      {
+        "id": "251226112879763456",
+        "requestId": "251226112758128640",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"CardTimeout\",\"attempt\":2}}]}}}"
+      },
+      {
+        "id": "251226113030758400",
+        "requestId": "251226112909123584",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"chargeId\":\"ch-1795586572\"}}}}"
+      },
+      {
+        "id": "251226154504036352",
+        "requestId": "251226154386595840",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"reservationId\":\"res-1795586582\",\"sku\":\"mug\",\"quantity\":2}}}}"
+      },
+      {
+        "id": "251226154650836992",
+        "requestId": "251226154533396480",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"CardDeclined\",\"orderId\":\"1795586582\"}}]}}}"
+      },
+      {
+        "id": "251226154797637632",
+        "requestId": "251226154684391424",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"released\":\"res-1795586582\"}}}}"
+      },
+      {
+        "id": "251226154881523712",
+        "requestId": "251226154315288576",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"OrderFailed\",\"orderId\":\"1795586582\",\"reason\":\"the card for order 1795586582 was declined\"}}]}}}"
+      },
+      {
+        "id": "251226196564520960",
+        "requestId": "251226196430303232",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"reservationId\":\"res-1795586592\",\"sku\":\"mug\",\"quantity\":2}}}}"
+      },
+      {
+        "id": "251226196719710208",
+        "requestId": "251226196606464000",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"chargeId\":\"ch-1795586592\"}}}}"
+      },
+      {
+        "id": "251226238503362560",
+        "requestId": "251226238385922048",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"reservationId\":\"res-1795586602\",\"sku\":\"mug\",\"quantity\":2}}}}"
+      },
+      {
+        "id": "251226238650163200",
+        "requestId": "251226238536916992",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"CardTimeout\",\"attempt\":1}}]}}}"
+      },
+      {
+        "id": "251226238796963840",
+        "requestId": "251226238683717632",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"CardTimeout\",\"attempt\":2}}]}}}"
+      },
+      {
+        "id": "251226238935375872",
+        "requestId": "251226238826323968",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"chargeId\":\"ch-1795586602\"}}}}"
+      },
+      {
+        "id": "251226239052816384",
+        "requestId": "251226238314614784",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Suspended\",\"cause\":null}}"
+      },
+      {
+        "id": "251226280484155392",
+        "requestId": "251226280366714880",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"reservationId\":\"res-1795586612\",\"sku\":\"mug\",\"quantity\":2}}}}"
+      },
+      {
+        "id": "251226280635150336",
+        "requestId": "251226280517709824",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"CardDeclined\",\"orderId\":\"1795586612\"}}]}}}"
+      },
+      {
+        "id": "251226280786145280",
+        "requestId": "251226280672899072",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"released\":\"res-1795586612\"}}}}"
+      },
+      {
+        "id": "251226280874225664",
+        "requestId": "251226280295403520",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"OrderFailed\",\"orderId\":\"1795586612\",\"reason\":\"the card for order 1795586612 was declined\"}}]}}}"
+      },
+      {
+        "id": "251226322464935936",
+        "requestId": "251226322347495424",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"reservationId\":\"res-1795586622\",\"sku\":\"mug\",\"quantity\":2}}}}"
+      },
+      {
+        "id": "251226322615930880",
+        "requestId": "251226322498490368",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"chargeId\":\"ch-1795586622\"}}}}"
+      },
+      {
+        "id": "251226491029819392",
+        "requestId": "251226490203541504",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Suspended\",\"cause\":null}}"
+      },
+      {
+        "id": "251226544637218816",
+        "requestId": "251226460516261888",
+        "payload": "{\"_tag\":\"Success\",\"value\":null}"
+      },
+      {
+        "id": "251226322737565696",
+        "requestId": "251226322276192256",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Suspended\",\"cause\":null}}"
+      },
+      {
+        "id": "251226490471976960",
+        "requestId": "251226490274844672",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"reservationId\":\"res-1795586662\",\"sku\":\"mug\",\"quantity\":2}}}}"
+      },
+      {
+        "id": "251226490614583296",
+        "requestId": "251226490505531392",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"CardTimeout\",\"attempt\":1}}]}}}"
+      },
+      {
+        "id": "251226490761383936",
+        "requestId": "251226490643943424",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"CardTimeout\",\"attempt\":2}}]}}}"
+      },
+      {
+        "id": "251226490903990272",
+        "requestId": "251226490790744064",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"chargeId\":\"ch-1795586662\"}}}}"
+      },
+      {
+        "id": "251226574718767104",
+        "requestId": "251226574202867712",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Suspended\",\"cause\":null}}"
+      },
+      {
+        "id": "251226406434906112",
+        "requestId": "251226406317465600",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"reservationId\":\"res-1795586642\",\"sku\":\"mug\",\"quantity\":2}}}}"
+      },
+      {
+        "id": "251226406585901056",
+        "requestId": "251226406468460544",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"CardDeclined\",\"orderId\":\"1795586642\"}}]}}}"
+      },
+      {
+        "id": "251226406736896000",
+        "requestId": "251226406623649792",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"released\":\"res-1795586642\"}}}}"
+      },
+      {
+        "id": "251226406820782080",
+        "requestId": "251226406233575424",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"OrderFailed\",\"orderId\":\"1795586642\",\"reason\":\"the card for order 1795586642 was declined\"}}]}}}"
+      },
+      {
+        "id": "251226448407306240",
+        "requestId": "251226448294060032",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"reservationId\":\"res-1795586652\",\"sku\":\"mug\",\"quantity\":2}}}}"
+      },
+      {
+        "id": "251226448545718272",
+        "requestId": "251226448436666368",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"chargeId\":\"ch-1795586652\"}}}}"
+      },
+      {
+        "id": "251226460331712512",
+        "requestId": "251226071939158016",
+        "payload": "{\"_tag\":\"Success\",\"value\":null}"
+      },
+      {
+        "id": "251226460436570112",
+        "requestId": "251226460205883392",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Success\",\"value\":null}}"
+      },
+      {
+        "id": "251226486143459328",
+        "requestId": "251226485891801089",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":null}}}"
+      },
+      {
+        "id": "251226486269288448",
+        "requestId": "251226486067961856",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"CardTimeout\",\"attempt\":1}}]}}}"
+      },
+      {
+        "id": "251226486458032128",
+        "requestId": "251226486328008704",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"CardTimeout\",\"attempt\":2}}]}}}"
+      },
+      {
+        "id": "251226486600638464",
+        "requestId": "251226486487392256",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"chargeId\":\"ch-1795586632\"}}}}"
+      },
+      {
+        "id": "251226502249586688",
+        "requestId": "251226113068507136",
+        "payload": "{\"_tag\":\"Success\",\"value\":null}"
+      },
+      {
+        "id": "251226502354444288",
+        "requestId": "251226502119563264",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Success\",\"value\":null}}"
+      },
+      {
+        "id": "251226544742080512",
+        "requestId": "251226544511389696",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Success\",\"value\":{\"trackingNumber\":\"TRK-1002\"}}}"
+      },
+      {
+        "id": "251226544846938112",
+        "requestId": "251226070251708416",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"orderId\":\"1002\",\"trackingNumber\":\"TRK-1002\"}}}}"
+      },
+      {
+        "id": "251226586454433792",
+        "requestId": "251226586244718592",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":null}}}"
+      },
+      {
+        "id": "251226586538319872",
+        "requestId": "251226196296077312",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Suspended\",\"cause\":null}}"
+      },
+      {
+        "id": "251226448663158784",
+        "requestId": "251226448226947072",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Suspended\",\"cause\":null}}"
+      },
+      {
+        "id": "251226460642091008",
+        "requestId": "251226460423987201",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":null}}}"
+      },
+      {
+        "id": "251226485803720704",
+        "requestId": "251226071490367488",
+        "payload": "{\"_tag\":\"Success\",\"value\":null}"
+      },
+      {
+        "id": "251226485963104256",
+        "requestId": "251226485677891584",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Success\",\"value\":null}}"
+      },
+      {
+        "id": "251226486013435904",
+        "requestId": "251226485682085888",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"reservationId\":\"res-1795586632\",\"sku\":\"mug\",\"quantity\":2}}}}"
+      },
+      {
+        "id": "251226486298648576",
+        "requestId": "251226070243319808",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Suspended\",\"cause\":null}}"
+      },
+      {
+        "id": "251226486713884672",
+        "requestId": "251226364252786688",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Suspended\",\"cause\":null}}"
+      },
+      {
+        "id": "251226502543187968",
+        "requestId": "251226502346055681",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":null}}}"
+      },
+      {
+        "id": "251226502627074048",
+        "requestId": "251226112271585280",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Suspended\",\"cause\":null}}"
+      },
+      {
+        "id": "251226532406632448",
+        "requestId": "251226532293386240",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"reservationId\":\"res-1795586672\",\"sku\":\"mug\",\"quantity\":2}}}}"
+      },
+      {
+        "id": "251226532553433088",
+        "requestId": "251226532440186880",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"CardDeclined\",\"orderId\":\"1795586672\"}}]}}}"
+      },
+      {
+        "id": "251226532691845120",
+        "requestId": "251226532582793216",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"released\":\"res-1795586672\"}}}}"
+      },
+      {
+        "id": "251226532771536896",
+        "requestId": "251226532184330240",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Failure\",\"cause\":[{\"_tag\":\"Fail\",\"error\":{\"_tag\":\"OrderFailed\",\"orderId\":\"1795586672\",\"reason\":\"the card for order 1795586672 was declined\"}}]}}}"
+      },
+      {
+        "id": "251226586160832512",
+        "requestId": "251226196757458944",
+        "payload": "{\"_tag\":\"Success\",\"value\":null}"
+      },
+      {
+        "id": "251226586261495808",
+        "requestId": "251226586030809088",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Success\",\"value\":null}}"
+      },
+      {
+        "id": "251226574429360128",
+        "requestId": "251226574311919616",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"reservationId\":\"res-1795586682\",\"sku\":\"mug\",\"quantity\":2}}}}"
+      },
+      {
+        "id": "251226574605520896",
+        "requestId": "251226574492274688",
+        "payload": "{\"_tag\":\"Success\",\"value\":{\"_tag\":\"Complete\",\"exit\":{\"_tag\":\"Success\",\"value\":{\"chargeId\":\"ch-1795586682\"}}}}"
+      }
+    ],
+    "runners": [
+      { "address": "127.0.0.1:34432", "healthy": true, "lastHeartbeat": "2026-11-25 06:03:45.662454" },
+      { "address": "127.0.0.1:34431", "healthy": true, "lastHeartbeat": "2026-11-25 06:04:42.964849" },
+      { "address": "127.0.0.1:34433", "healthy": true, "lastHeartbeat": "2026-11-25 06:04:45.78289" }
+    ],
+    "locks": [
+      { "shardId": "default:5", "address": "127.0.0.1:34431", "acquiredAt": "2026-11-25 06:04:42.705882" },
+      { "shardId": "default:12", "address": "127.0.0.1:34431", "acquiredAt": "2026-11-25 06:04:42.705882" },
+      { "shardId": "default:3", "address": "127.0.0.1:34431", "acquiredAt": "2026-11-25 06:04:42.705882" },
+      { "shardId": "default:6", "address": "127.0.0.1:34431", "acquiredAt": "2026-11-25 06:04:42.705882" },
+      { "shardId": "default:11", "address": "127.0.0.1:34431", "acquiredAt": "2026-11-25 06:04:42.705882" },
+      { "shardId": "default:4", "address": "127.0.0.1:34431", "acquiredAt": "2026-11-25 06:04:42.971054" },
+      { "shardId": "default:10", "address": "127.0.0.1:34433", "acquiredAt": "2026-11-25 06:04:45.667777" },
+      { "shardId": "default:9", "address": "127.0.0.1:34433", "acquiredAt": "2026-11-25 06:04:45.667777" },
+      { "shardId": "default:8", "address": "127.0.0.1:34433", "acquiredAt": "2026-11-25 06:04:45.667777" },
+      { "shardId": "default:2", "address": "127.0.0.1:34433", "acquiredAt": "2026-11-25 06:04:45.667777" },
+      { "shardId": "default:7", "address": "127.0.0.1:34433", "acquiredAt": "2026-11-25 06:04:45.667777" },
+      { "shardId": "default:1", "address": "127.0.0.1:34433", "acquiredAt": "2026-11-25 06:04:45.789111" }
+    ]
+  },
+  "now": 1795586685748
+}

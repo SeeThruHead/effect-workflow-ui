@@ -17,7 +17,7 @@ const load = Effect.gen(function* () {
   const sql = yield* SqlClient.SqlClient
   yield* sql`CREATE TABLE cluster_messages (id INTEGER PRIMARY KEY, request_id INTEGER NOT NULL, entity_type TEXT NOT NULL,
     entity_id TEXT NOT NULL, tag TEXT, payload TEXT, processed BOOLEAN NOT NULL, deliver_at INTEGER, shard_id TEXT,
-    trace_id TEXT)`
+    trace_id TEXT, span_id TEXT)`
   yield* sql`CREATE TABLE cluster_replies (id INTEGER PRIMARY KEY, request_id INTEGER NOT NULL, payload TEXT NOT NULL)`
   yield* Effect.forEach(
     recording.storage.messages,
@@ -32,7 +32,8 @@ const load = Effect.gen(function* () {
         processed: message.processed ? 1 : 0,
         deliver_at: message.deliverAt,
         shard_id: message.shardId ?? null,
-        trace_id: message.traceId ?? null
+        trace_id: message.traceId ?? null,
+        span_id: message.spanId ?? null
       })}`,
     { discard: true }
   )

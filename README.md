@@ -30,12 +30,23 @@ cluster page, and are skipped if they are missing). For SQLite use `CLUSTER_DATA
 and mount the directory that holds the database (not read-only: SQLite in WAL mode needs its `-wal` and `-shm`
 files beside it, even when opened read-only). `CLUSTER_RECENT_HOURS` (default 168, a week) keeps reads small on a
 big cluster: it reads runs that started in that window and every run that has not finished, whenever it started;
-`0` reads everything. `VIEWER_TRACE_URL` is your tracing tool's URL with `{traceId}` where the id goes; each run
-page then links to its trace. `CLUSTER_TABLE_PREFIX` sets a table prefix other than `cluster`; `PORT` and `HOST`
-set where it listens.
+`0` reads everything. `VIEWER_TRACE_URL` is your tracing tool's URL with `{traceId}` (and optionally `{spanId}`)
+where the ids go; each run page then links to its trace and to the selected step's span. `CLUSTER_TABLE_PREFIX`
+sets a table prefix other than `cluster`; `PORT` and `HOST` set where it listens.
 
-The viewer has four pages: needs attention, runs, a run, and the cluster (mailboxes per entity type, past-due
-messages, runners and the shards they hold).
+The viewer has four pages: needs attention, runs, a run, and the cluster: mailboxes per entity type, past-due
+messages, and runners as live, silent (no heartbeat for 45 seconds; storage can still call a dead runner healthy)
+or unhealthy, with the shards they hold. Shard ownership comes from the shard locks table, which Effect writes only
+when Postgres advisory locks are off.
+
+### Alerts, still read-only
+
+- `GET /metrics` serves Prometheus gauges: `effect_workflow_runs{status}`, `effect_workflow_attention{concern}`,
+  `effect_workflow_mailbox_unprocessed` and `_overdue` per entity type, `effect_workflow_oldest_overdue_seconds`,
+  `effect_workflow_runners{state}` and `effect_workflow_unowned_shards`.
+- `ALERT_WEBHOOK_URL` (checked every `ALERT_EVERY`, default one minute) receives one JSON POST per run that has
+  newly failed, gone overdue or got stuck: `{ concern, workflow, runId, why, since }`. A run is sent once while its
+  problem lasts and again only if it clears and comes back; restarts send current problems once more.
 
 ### The libraries
 

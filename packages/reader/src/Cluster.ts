@@ -1,4 +1,4 @@
-import { Array as Arr, Duration, Option, Order } from "effect"
+import { Array as Arr, DateTime, Duration, Option, Order, String as Str } from "effect"
 import { at } from "./Journal.ts"
 import type { MessageRow, Storage } from "./Rows.ts"
 
@@ -53,34 +53,68 @@ export const mailboxes = (
     worstFirst
   )
 
+export type RunnerState = "live" | "silent" | "unhealthy"
+
 export type Runner = {
   readonly address: string
   readonly healthy: boolean
   readonly lastHeartbeat: string
+  readonly heardAt: number | null
+  readonly state: RunnerState
   readonly shards: number
 }
+
+export type Ownership = "none" | "locks" | "unknown"
 
 export type Placement = {
   readonly runners: ReadonlyArray<Runner>
   readonly unowned: ReadonlyArray<string>
+  readonly ownership: Ownership
 }
 
-export const placement = (storage: Storage): Placement => {
+export const heardAt = (stamp: string): number | null =>
+  Option.getOrNull(
+    Option.map(DateTime.make(`${Str.replace(" ", "T")(Str.trim(stamp))}Z`), (time) => DateTime.toEpochMillis(time))
+  )
+
+const stateOf = (healthy: boolean, heard: number | null, now: number, limit: number): RunnerState => {
+  if (!healthy) return "unhealthy"
+  if (heard === null) return "live"
+
+  return now - heard > limit ? "silent" : "live"
+}
+
+const ownershipOf = (runners: number, locks: number): Ownership => {
+  if (runners === 0) return "none"
+
+  return locks === 0 ? "unknown" : "locks"
+}
+
+export const placement = (
+  storage: Storage,
+  now: number,
+  silentAfter: Duration.Duration = Duration.seconds(45)
+): Placement => {
   const locks = storage.locks ?? []
+  const registered = storage.runners ?? []
+  const ownership = ownershipOf(registered.length, locks.length)
   const owned = new Set(locks.map((lock) => lock.shardId))
   const used = Arr.dedupe(Arr.getSomes(storage.messages.map((message) => Option.fromNullishOr(message.shardId))))
 
   return {
-    runners: (storage.runners ?? []).map((runner) => ({
+    runners: registered.map((runner) => ({
       ...runner,
+      heardAt: heardAt(runner.lastHeartbeat),
+      state: stateOf(runner.healthy, heardAt(runner.lastHeartbeat), now, Duration.toMillis(silentAfter)),
       shards: locks.filter((lock) => lock.address === runner.address).length
     })),
     unowned:
-      (storage.runners ?? []).length === 0
-        ? []
-        : Arr.sort(
+      ownership === "locks"
+        ? Arr.sort(
             used.filter((shard) => !owned.has(shard)),
             Order.String
           )
+        : [],
+    ownership
   }
 }

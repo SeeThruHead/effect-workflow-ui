@@ -1,4 +1,4 @@
-import type { Mailbox, Placement } from "@effect-workflow/reader"
+import type { Mailbox, Placement, Runner, RunnerState } from "@effect-workflow/reader"
 import { Banner, EmptyState, PageHeader, Section, Stack, Table, clock, duration } from "@effect-workflow/ui"
 import type { Html, HtmlBuilder } from "foldkit/html"
 
@@ -69,36 +69,72 @@ const mailboxTable = <M>(h: HtmlBuilder<M>, props: ClusterProps): Html =>
     }))
   })
 
-const runnersSection = <M>(h: HtmlBuilder<M>, placement: Placement): Html =>
+const stateLabels: Readonly<Record<RunnerState, string>> = {
+  live: "live",
+  silent: "silent: no heartbeat",
+  unhealthy: "marked unhealthy"
+}
+
+const heard = (runner: Runner, now: number): string =>
+  runner.heardAt === null ? runner.lastHeartbeat : `${duration(Math.max(0, now - runner.heardAt))} ago`
+
+const shardsHeld = (runner: Runner, placement: Placement): string =>
+  placement.ownership === "locks" ? String(runner.shards) : "not stored"
+
+const silentBanner = <M>(h: HtmlBuilder<M>, placement: Placement, now: number): ReadonlyArray<Html> => {
+  const quiet = placement.runners.filter((runner) => runner.state !== "live")
+  if (quiet.length === 0) return []
+
+  return [
+    Banner(h, {
+      tone: "alarm",
+      title: quiet.length === 1 ? "1 runner has gone quiet" : `${quiet.length} runners have gone quiet`,
+      text: quiet.map((runner) => `${runner.address}, last heard ${heard(runner, now)}`).join("; ")
+    })
+  ]
+}
+
+const ownershipNote = <M>(h: HtmlBuilder<M>, placement: Placement): ReadonlyArray<Html> => {
+  if (placement.ownership === "unknown")
+    return [
+      EmptyState(h, {
+        text: "Shard ownership is not in storage: the shard locks table is empty, which is what a Postgres cluster using advisory locks (Effect's default) looks like."
+      })
+    ]
+  if (placement.unowned.length === 0) return []
+
+  return [
+    Banner(h, {
+      tone: "warn",
+      title: `${placement.unowned.length} shards with messages have no runner holding them`,
+      text: placement.unowned.join(", ")
+    })
+  ]
+}
+
+const runnersSection = <M>(h: HtmlBuilder<M>, placement: Placement, now: number): Html =>
   placement.runners.length === 0
     ? EmptyState(h, {
         text: "No runners are registered in storage. A SingleRunner cluster, or one that keeps runners in memory, stores none."
       })
     : Stack(h, {
         children: [
+          ...silentBanner(h, placement, now),
           Table(h, {
             label: "Runners",
             columns: [
               { label: "Address", align: "mono" },
-              { label: "Healthy" },
-              { label: "Last heartbeat", align: "mono" },
+              { label: "State" },
+              { label: "Last heartbeat" },
               { label: "Shards held", align: "number" }
             ],
             rows: placement.runners.map((runner) => ({
               key: runner.address,
-              cells: [runner.address, runner.healthy ? "yes" : "no", runner.lastHeartbeat, String(runner.shards)],
-              ...(runner.healthy ? {} : { tint: "alarm" as const })
+              cells: [runner.address, stateLabels[runner.state], heard(runner, now), shardsHeld(runner, placement)],
+              ...(runner.state === "live" ? {} : { tint: "alarm" as const })
             }))
           }),
-          ...(placement.unowned.length === 0
-            ? []
-            : [
-                Banner(h, {
-                  tone: "warn",
-                  title: `${placement.unowned.length} shards with messages have no runner holding them`,
-                  text: placement.unowned.join(", ")
-                })
-              ])
+          ...ownershipNote(h, placement)
         ]
       })
 
@@ -109,6 +145,6 @@ export const ClusterPage = <M>(h: HtmlBuilder<M>, props: ClusterProps): Html =>
       PageHeader(h, { title: ["Cluster"] }),
       summary(h, props),
       Section(h, { title: "Mailboxes by entity type", children: [mailboxTable(h, props)] }),
-      Section(h, { title: "Runners and shards", children: [runnersSection(h, props.placement)] })
+      Section(h, { title: "Runners and shards", children: [runnersSection(h, props.placement, props.now)] })
     ]
   })

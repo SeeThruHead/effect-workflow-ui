@@ -9,7 +9,7 @@ import { view } from "./app/view.ts"
 
 const isRecorded = import.meta.env.MODE === "recorded"
 
-const mode = isRecorded ? recorded : live
+const mode = isRecorded ? recorded(new URLSearchParams(location.search).get("recording") ?? "shop") : live
 
 const subscriptions = Subscription.make<Model, Message>()((entry) => ({
   refresh: entry(
@@ -38,7 +38,7 @@ Runtime.run(
       onUrlRequest: (request) => Message.ClickedLink({ request }),
       onUrlChange: (url) => Message.ChangedUrl({ url })
     },
-    resources: isRecorded ? Source.recorded("./recording.json") : Source.live,
+    resources: isRecorded ? Source.recorded(mode.recording) : Source.live,
     container: document.getElementById("root")
   })
 )

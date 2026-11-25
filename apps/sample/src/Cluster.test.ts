@@ -57,7 +57,28 @@ describe("mailboxes, replayed 20 minutes after the recording stopped", () => {
 
 describe("runners and shards", () => {
   it("a SingleRunner cluster stores no runners, so no shard is reported unowned", () => {
-    assert.deepStrictEqual(placement(recording.storage), { runners: [], unowned: [] })
+    assert.deepStrictEqual(placement(recording.storage, recording.now), { runners: [], unowned: [], ownership: "none" })
+  })
+
+  it("a runner whose heartbeat stopped is silent even while storage still says healthy", () => {
+    const now = Date.UTC(2026, 10, 25, 6, 0, 0)
+    const storage = {
+      ...recording.storage,
+      runners: [
+        { address: "a:1", healthy: true, lastHeartbeat: "2026-11-25 05:59:40.1" },
+        { address: "b:1", healthy: true, lastHeartbeat: "2026-11-25 05:55:00" },
+        { address: "c:1", healthy: false, lastHeartbeat: "2026-11-25 05:59:50" }
+      ]
+    }
+    assert.deepStrictEqual(
+      placement(storage, now).runners.map((runner) => [runner.address, runner.state]),
+      [
+        ["a:1", "live"],
+        ["b:1", "silent"],
+        ["c:1", "unhealthy"]
+      ]
+    )
+    assert.strictEqual(placement(storage, now).ownership, "unknown")
   })
 
   it("with runners, each holds its locked shards and shards nobody holds are named", () => {
@@ -73,7 +94,7 @@ describe("runners and shards", () => {
       ],
       locks: held === undefined ? [] : [{ shardId: held, address: "runner-a:34431", acquiredAt: "2026-11-25 00:00:00" }]
     }
-    const found = placement(storage)
+    const found = placement(storage, recording.now)
     assert.deepStrictEqual(
       found.runners.map((runner) => [runner.address, runner.shards]),
       [

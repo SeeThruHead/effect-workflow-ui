@@ -80,7 +80,8 @@ export class ClusterRepo extends Context.Service<
           sql`
           SELECT CAST(m.id AS TEXT) AS "id", CAST(m.request_id AS TEXT) AS "requestId", m.entity_type AS "entityType",
             m.entity_id AS "entityId", m.tag, m.payload, m.processed,
-            CAST(m.deliver_at AS DOUBLE PRECISION) AS "deliverAt", m.shard_id AS "shardId", m.trace_id AS "traceId"
+            CAST(m.deliver_at AS DOUBLE PRECISION) AS "deliverAt", m.shard_id AS "shardId", m.trace_id AS "traceId",
+            m.span_id AS "spanId"
           FROM ${sql(messagesTable)} m
           WHERE ${scope(first)}`.pipe(
             Effect.flatMap(decodeMessages),

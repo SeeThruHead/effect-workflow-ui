@@ -20,6 +20,7 @@ export type RunProps<M> = {
   readonly view: HistoryView
   readonly backHref: string
   readonly traceHref?: string
+  readonly stepSpanHref?: string
   readonly onSelect: (id: string) => M
   readonly onView: (view: HistoryView) => M
   readonly onCopy: M
@@ -43,6 +44,9 @@ const page = <M>(h: HtmlBuilder<M>, run: Execution, props: RunProps<M>): Readonl
   }),
   ...(props.traceHref === undefined ? [] : [LinkButton(h, { label: "Open this run's trace", href: props.traceHref })]),
   ...(run.failure === undefined ? [] : [FailurePanel(h, { failure: run.failure, onCopy: () => props.onCopy })]),
+  ...(props.stepSpanHref === undefined
+    ? []
+    : [LinkButton(h, { label: "Open the selected step's span", href: props.stepSpanHref })]),
   Timeline(h, {
     groups: run.groups,
     range: { start: run.startedAt, end: run.endedAt ?? props.now },
