@@ -2,6 +2,7 @@ import type { Execution, Group } from "@effect-workflow/ui"
 import { Array as Arr, Duration, Option, Order } from "effect"
 import { at, signalWait } from "./Journal.ts"
 import type { MessageRow, Storage } from "./Rows.ts"
+import { brief } from "./Text.ts"
 
 export type Concern = "failed" | "overdue" | "stuck" | "waiting"
 
@@ -83,14 +84,14 @@ const failed = (run: Execution): Option.Option<Attention> =>
     ? Option.some({
         concern: "failed",
         run,
-        why: run.failure === undefined ? "failed" : `${run.failure.tag}: ${run.failure.message}`,
+        why: run.failure === undefined ? "failed" : brief(`${run.failure.tag}: ${run.failure.message}`),
         since: run.endedAt ?? run.startedAt
       })
     : Option.none()
 
 const waiting = (run: Execution): Option.Option<Attention> =>
   run.status === "waiting" || run.status === "queued"
-    ? Option.some({ concern: "waiting", run, why: run.currentDetails ?? run.status, since: lastActivity(run) })
+    ? Option.some({ concern: "waiting", run, why: brief(run.currentDetails ?? run.status), since: lastActivity(run) })
     : Option.none()
 
 const concernFor =

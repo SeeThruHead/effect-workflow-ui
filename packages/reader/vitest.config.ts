@@ -15,7 +15,14 @@ export default defineConfig({
     coverage: {
       enabled: true,
       provider: "istanbul",
-      include: ["src/Journal.ts", "src/Attention.ts", "src/Cluster.ts", "src/Alerts.ts", "src/Decode.ts"],
+      include: [
+        "src/Journal.ts",
+        "src/Attention.ts",
+        "src/Cluster.ts",
+        "src/Alerts.ts",
+        "src/Decode.ts",
+        "src/Text.ts"
+      ],
       exclude: ["**/*.test.ts"],
       reporter: ["text-summary", "json-summary"]
     }

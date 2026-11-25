@@ -13,3 +13,4 @@ export {
   placement
 } from "./Cluster.ts"
 export { Alert, type Delivery, type MetricsInput, alertKey, alertsOf, deliver, metricsText } from "./Alerts.ts"
+export { brief, plain } from "./Text.ts"

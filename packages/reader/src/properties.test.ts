@@ -1,9 +1,10 @@
 import { assert, describe, it } from "@effect/vitest"
-import { Schema } from "effect"
+import { Schema, String as Str } from "effect"
 import { Snowflake } from "effect/cluster"
 import { alertKey, alertsOf, deliver } from "./Alerts.ts"
 import { attention } from "./Attention.ts"
 import { mailboxes } from "./Cluster.ts"
+import { brief, plain } from "./Text.ts"
 import { executions, signalWait } from "./Journal.ts"
 import type { MessageRow, ReplyRow, Storage } from "./Rows.ts"
 
@@ -252,4 +253,45 @@ describe("mailboxes, over generated cluster storage", () => {
     )
     assert.isTrue(boxes.every((box) => box.overdue <= box.unprocessed))
   })
+})
+
+const esc = String.fromCharCode(27)
+
+describe("error text from real runs", () => {
+  it.prop(
+    "terminal colour codes are removed and the words around them are kept",
+    { words: Schema.Array(Schema.String.check(Schema.isPattern(/^[a-z ]{0,12}$/))) },
+    ({ words }) => {
+      const coloured = words.map((word, i) => `${esc}[${30 + (i % 8)};1m${word}${esc}[0m`).join("")
+      assert.strictEqual(plain(coloured), words.join(""))
+      assert.notInclude(plain(coloured), esc)
+    }
+  )
+
+  it.prop(
+    "text with no control characters comes through unchanged",
+    { text: Schema.String.check(Schema.isPattern(/^[ -~]*$/)) },
+    ({ text }) => {
+      assert.strictEqual(plain(text), text)
+    }
+  )
+
+  it.prop("a brief is short and starts the same way as the text", { text: Schema.String }, ({ text }) => {
+    const short = brief(text, 40)
+    const flat = Str.trim(Str.replace(/\s+/g, " ")(text))
+    assert.isAtMost(short.length, 41)
+    assert.isTrue(Str.startsWith(Str.trimEnd(Str.replace(/…$/, "")(short)))(flat))
+  })
+})
+
+describe("one-line reasons", () => {
+  it.prop(
+    "box-drawing from terminal output never reaches a brief",
+    { words: Schema.Array(Schema.String.check(Schema.isPattern(/^[a-z]{1,8}$/))).check(Schema.isMinLength(1)) },
+    ({ words }) => {
+      const line = Str.repeat(20)("─")
+      const boxed = `╭${line}╮ │ ${words.join(" ")} │ ╰${line}╯`
+      assert.strictEqual(brief(boxed, 400), words.join(" "))
+    }
+  )
 })

@@ -3,6 +3,7 @@ import { Array as Arr, DateTime, Option, Order, Predicate, Schema, String as Str
 import { Snowflake } from "effect/cluster"
 import type { DecodableWorkflow } from "./Decode.ts"
 import { decodedWith } from "./Decode.ts"
+import { plain } from "./Text.ts"
 import {
   ClockPayload,
   DeferredPayload,
@@ -69,8 +70,8 @@ const fieldsText = (value: unknown): string =>
 
 const messageOf = (value: unknown, fallback: string): string =>
   Option.match(Schema.decodeUnknownOption(Messaged)(value), {
-    onNone: () => (fieldsText(value) === "" ? fallback : fieldsText(value)),
-    onSome: (found) => found.message
+    onNone: () => (fieldsText(value) === "" ? fallback : plain(fieldsText(value))),
+    onSome: (found) => plain(found.message)
   })
 
 const failureFromReason = (reason: Reason): Failure => {
