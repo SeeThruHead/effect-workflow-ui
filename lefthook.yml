@@ -1,0 +1,14 @@
+pre-commit:
+  commands:
+    affected:
+      run: bun run moon run :typecheck :lint :format-check --affected
+
+commit-msg:
+  commands:
+    attribution:
+      run: bun tooling/hooks/tools/attribution-hook.ts {1}
+
+pre-push:
+  commands:
+    test:
+      run: bun run moon run :test --affected

@@ -1,0 +1,29 @@
+{
+  "name": "@effect-workflow/site",
+  "private": true,
+  "description": "The project's website, built with Spar and rendered to static HTML for GitHub Pages, with the viewer's recorded demo inside it.",
+  "type": "module",
+  "scripts": {
+    "build": "bun tools/build.ts",
+    "typecheck": "effect-tsgo tsrs -p tsconfig.json",
+    "lint": "effect-tsgo --tsrs-lint oxlint --type-aware --deny-warnings -c ../../tooling/lint/oxlintrc.json src tools",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "test": "bun --bun vitest run"
+  },
+  "dependencies": {
+    "effect": "4.1.4",
+    "spar": "workspace:*"
+  },
+  "devDependencies": {
+    "@effect/platform-bun": "4.1.4",
+    "@effect/tsgo": "0.67.7",
+    "@effect/vitest": "4.1.4",
+    "@types/bun": "1.4.4",
+    "@vitest/coverage-istanbul": "5.0.5",
+    "oxfmt": "0.75.0",
+    "oxlint": "1.91.0",
+    "typescript": "7.0.2",
+    "vitest": "5.0.5"
+  }
+}

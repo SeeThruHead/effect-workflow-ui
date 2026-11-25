@@ -1,0 +1,110 @@
+{
+  "$schema": "./node_modules/@effect/tsgo/oxlint-schema.json",
+  "extends": [
+    "./node_modules/@effect/tsgo/oxlint-presets/strict.json",
+    "./node_modules/@effect/tsgo/oxlint-presets/effect-native.json"
+  ],
+  "plugins": ["typescript", "unicorn", "oxc", "import"],
+  "jsPlugins": ["./house-rules.ts"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error"
+  },
+  "ignorePatterns": ["fixtures/**"],
+  "rules": {
+    "typescript/no-explicit-any": "error",
+    "typescript/consistent-type-definitions": ["error", "type"],
+    "typescript/no-non-null-assertion": "error",
+    "import/no-cycle": "error",
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": ["_tag"]
+      }
+    ],
+    "import/no-unassigned-import": "error",
+    "effecttsgo/unstable-api-usage": "off",
+    "effecttsgo/experimental-api-usage": "off",
+    "effecttsgo/prefer-effect-array": "off",
+    "effecttsgo/prefer-effect-record": "off",
+    "typescript/no-unsafe-type-assertion": "off",
+    "house/no-loops": "error",
+    "house/no-let": "error",
+    "house/no-mutation": "error",
+    "house/no-comments": "error",
+    "house/no-nested-if": "error",
+    "house/no-multiline-logical": "error",
+    "house/no-casts": "error",
+    "house/run-at-entry-only": "error",
+    "house/no-gen-wrapper": "error",
+    "house/boundaries": "error",
+    "house/endpoints-in-client": "error",
+    "house/theme-values-only": "error",
+    "effecttsgo/effect-try-without-catch": "error",
+    "effecttsgo/map-map-error-to-map-both": "error",
+    "effecttsgo/provide-merge-all-to-array": "error",
+    "effecttsgo/type-union-to-schema-union": "error",
+    "effecttsgo/yield-in-call-argument": "error",
+    // In plain code the only rewrite is a sync Schema codec, which schema-sync forbids; global-json-in-effect covers Effect code.
+    "effecttsgo/global-json": "off",
+    "effecttsgo/global-json-in-effect": "error",
+    "effecttsgo/global-date": "error",
+    "effecttsgo/global-date-in-effect": "error",
+    "effecttsgo/global-random": "error",
+    "effecttsgo/global-random-in-effect": "error",
+    "effecttsgo/crypto-random-uuid": "error",
+    "effecttsgo/crypto-random-uuid-in-effect": "error",
+    "effecttsgo/global-fetch": "error",
+    "effecttsgo/global-fetch-in-effect": "error",
+    "effecttsgo/schema-union-of-literals": "error",
+    "effecttsgo/match-to-result-or-option": "error",
+    "effecttsgo/unsafe-effect-type-assertion": "error",
+    "effecttsgo/prefer-schema-tagged-error": "error",
+    "effecttsgo/prefer-effect-string": "error",
+    "typescript/consistent-return": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/apps/sample/src/Warehouse.ts"],
+      "rules": {
+        "house/endpoints-in-client": "off"
+      }
+    },
+    {
+      "files": ["**/packages/lint/*.ts", "house-rules.ts", "house-rules.test.ts", "layout.ts", "layout.test.ts"],
+      "rules": {
+        "effecttsgo/node-builtin-import": "off",
+        "effecttsgo/prefer-effect-string": "off"
+      }
+    },
+    {
+      "files": ["**/tools/*.ts", "**/src/app/server.ts", "**/*.test.ts"],
+      "rules": {
+        "effecttsgo/strict-effect-provide": "off"
+      }
+    },
+    {
+      "files": ["**/*.stories.ts"],
+      "rules": {
+        "effecttsgo/async-function": "off"
+      }
+    },
+    {
+      "files": ["**/e2e/*.ts", "**/playwright.config.ts", "**/vitest.config.ts"],
+      "rules": {
+        "effecttsgo/async-function": "off",
+        "effecttsgo/process-env": "off",
+        "effecttsgo/node-builtin-import": "off"
+      }
+    },
+    {
+      "files": ["**/src/pi/*.ts"],
+      "rules": {
+        "effecttsgo/async-function": "off",
+        "effecttsgo/new-promise": "off",
+        "effecttsgo/node-builtin-import": "off",
+        "effecttsgo/prefer-effect-string": "off"
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "@effect-workflow/viewer",
+  "private": true,
+  "description": "A read-only viewer for an Effect cluster: needs attention, runs, and each run's steps. Runs against a live cluster through its server, or replays a recording.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5174",
+    "build": "vite build --outDir dist/live",
+    "build:recorded": "mkdir -p recorded && cp ../sample/src/fixtures/recording.json recorded/recording.json && vite build --mode recorded --base ./ --outDir dist/recorded",
+    "start": "bun src/app/server.ts",
+    "typecheck": "effect-tsgo tsrs -p tsconfig.json",
+    "lint": "effect-tsgo --tsrs-lint oxlint --type-aware --deny-warnings -c ../../tooling/lint/oxlintrc.json src",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "test": "bun --bun vitest run"
+  },
+  "dependencies": {
+    "@effect-workflow/client": "workspace:*",
+    "@effect-workflow/reader": "workspace:*",
+    "@effect-workflow/sample": "workspace:*",
+    "@effect-workflow/ui": "workspace:*",
+    "@effect/platform-bun": "4.1.4",
+    "@stylexjs/stylex": "0.19.1",
+    "effect": "4.1.4",
+    "foldkit": "0.170.0"
+  },
+  "devDependencies": {
+    "@effect/tsgo": "0.67.7",
+    "@effect/vitest": "4.1.4",
+    "@stylexjs/unplugin": "0.19.1",
+    "@types/bun": "1.4.4",
+    "@vitest/coverage-istanbul": "5.0.5",
+    "oxfmt": "0.75.0",
+    "oxlint": "1.91.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.4",
+    "vitest": "5.0.5"
+  }
+}

@@ -1,0 +1,3 @@
+[submodule "vendor/spar"]
+	path = vendor/spar
+	url = https://github.com/SeeThruHead/spar.git

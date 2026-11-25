@@ -1,0 +1,41 @@
+{
+  "name": "@effect-workflow/reader",
+  "version": "0.1.0",
+  "description": "Reads an Effect cluster's message storage, never writing to it, and folds it into the workflow UI's Execution model.",
+  "repository": "https://github.com/SeeThruHead/effect-workflow-ui",
+  "files": [
+    "src",
+    "tools"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./repo": "./src/ClusterRepo.ts"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "typecheck": "effect-tsgo tsrs -p tsconfig.json",
+    "lint": "effect-tsgo --tsrs-lint oxlint --type-aware --deny-warnings -c ../../tooling/lint/oxlintrc.json src tools",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "test": "true",
+    "runs": "bun tools/runs.ts",
+    "record": "bun tools/record.ts"
+  },
+  "dependencies": {
+    "@effect-workflow/ui": "workspace:*",
+    "@effect/sql-pg": "4.1.4",
+    "@effect/sql-sqlite-bun": "4.1.4",
+    "effect": "4.1.4"
+  },
+  "devDependencies": {
+    "@effect/platform-bun": "4.1.4",
+    "@effect/tsgo": "0.67.7",
+    "@types/bun": "1.4.4",
+    "oxfmt": "0.75.0",
+    "oxlint": "1.91.0",
+    "typescript": "7.0.2"
+  }
+}

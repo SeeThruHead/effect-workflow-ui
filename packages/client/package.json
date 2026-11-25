@@ -1,0 +1,27 @@
+{
+  "name": "@effect-workflow/client",
+  "private": true,
+  "description": "The viewer's one RPC: the server hands the browser a read-only recording of the cluster's storage.",
+  "type": "module",
+  "exports": {
+    ".": "./src/Endpoint.ts"
+  },
+  "scripts": {
+    "typecheck": "effect-tsgo tsrs -p tsconfig.json",
+    "lint": "effect-tsgo --tsrs-lint oxlint --type-aware --deny-warnings -c ../../tooling/lint/oxlintrc.json src",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "test": "true"
+  },
+  "dependencies": {
+    "@effect-workflow/reader": "workspace:*",
+    "effect": "4.1.4"
+  },
+  "devDependencies": {
+    "@effect/tsgo": "0.67.7",
+    "@types/bun": "1.4.4",
+    "oxfmt": "0.75.0",
+    "oxlint": "1.91.0",
+    "typescript": "7.0.2"
+  }
+}

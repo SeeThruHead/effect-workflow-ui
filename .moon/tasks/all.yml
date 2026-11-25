@@ -1,0 +1,33 @@
+$schema: https://moonrepo.dev/schemas/tasks.json
+fileGroups:
+  sources:
+    - "src/**/*"
+    - "tools/**/*"
+    - "e2e/**/*"
+    - "*.ts"
+    - "package.json"
+    - "tsconfig.json"
+  root:
+    - "/tsconfig.base.json"
+    - "/bun.lock"
+    - "/.oxfmtrc.json"
+    - "/tooling/lint/oxlintrc.json"
+    - "/tooling/lint/*.ts"
+tasks:
+  typecheck:
+    command: bun run typecheck
+    deps: ["^:typecheck"]
+    inputs: ["@group(sources)", "@group(root)", "project://^?group=sources"]
+  lint:
+    command: bun run lint
+    deps: ["^:lint"]
+    inputs: ["@group(sources)", "@group(root)", "project://^?group=sources"]
+  format-check:
+    command: bun run format:check
+    inputs: ["@group(sources)", "@group(root)"]
+  test:
+    command: bun run test
+    deps: ["^:test"]
+    inputs: ["@group(sources)", "@group(root)", "vitest.config.ts", "project://^?group=sources"]
+  check:
+    deps: ["^:check", typecheck, lint, format-check, test]

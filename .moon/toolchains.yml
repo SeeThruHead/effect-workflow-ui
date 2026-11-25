@@ -1,0 +1,9 @@
+$schema: https://moonrepo.dev/schemas/toolchains.json
+javascript:
+  packageManager: bun
+  inferTasksFromScripts: false
+  syncProjectWorkspaceDependencies: false
+  dedupeOnLockfileChange: false
+bun:
+  version: "1.4.2"
+  installArgs: ["--frozen-lockfile", "--ignore-scripts"]

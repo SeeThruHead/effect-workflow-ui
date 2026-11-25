@@ -1,0 +1,37 @@
+{
+  "name": "@effect-workflow/sample",
+  "private": true,
+  "description": "A small shop on Effect cluster and Effect workflow, run locally so the viewer always has real runs to show.",
+  "type": "module",
+  "exports": {
+    "./Api.ts": "./src/Api.ts"
+  },
+  "scripts": {
+    "start": "bun src/app/server.ts",
+    "typecheck": "effect-tsgo tsrs -p tsconfig.json",
+    "lint": "effect-tsgo --tsrs-lint oxlint --type-aware --deny-warnings -c ../../tooling/lint/oxlintrc.json src tools",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "test": "bun --bun vitest run",
+    "record": "bun ../../packages/reader/tools/record.ts .data/sample.db src/fixtures/recording.json 20",
+    "stories": "bun tools/stories.ts && cd ../../packages/ui && bun run format"
+  },
+  "dependencies": {
+    "@effect-workflow/reader": "workspace:*",
+    "@effect/platform-bun": "4.1.4",
+    "@effect/sql-pg": "4.1.4",
+    "@effect/sql-sqlite-bun": "4.1.4",
+    "effect": "4.1.4"
+  },
+  "devDependencies": {
+    "@effect-workflow/ui": "workspace:*",
+    "@effect/tsgo": "0.67.7",
+    "@effect/vitest": "4.1.4",
+    "@types/bun": "1.4.4",
+    "@vitest/coverage-istanbul": "5.0.5",
+    "oxfmt": "0.75.0",
+    "oxlint": "1.91.0",
+    "typescript": "7.0.2",
+    "vitest": "5.0.5"
+  }
+}
