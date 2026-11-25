@@ -8,7 +8,7 @@ export const dockerSqlite = `docker run --rm -p 4317:4317 -v "$PWD/data:/data" \
   ghcr.io/seethruhead/effect-workflow-ui:latest`
 
 export const grant = `CREATE ROLE viewer LOGIN PASSWORD 'password';
-GRANT SELECT ON cluster_messages, cluster_replies TO viewer;`
+GRANT SELECT ON cluster_messages, cluster_replies, cluster_runners, cluster_locks TO viewer;`
 
 export const reader = `import { attention, executions } from "@effect-workflow/reader"
 import { ClusterRepo } from "@effect-workflow/reader/repo"

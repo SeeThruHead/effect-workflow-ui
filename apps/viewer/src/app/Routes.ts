@@ -6,6 +6,8 @@ export const attentionHref = "#/"
 
 export const runsHref = "#/runs"
 
+export const clusterHref = "#/cluster"
+
 export const runHref = (id: string): string => `#/runs/${encodeURIComponent(id)}`
 
 const runPath = /^\/runs\/([^/]+)$/
@@ -14,6 +16,7 @@ export const pageOfHash = (hash: string): Page => {
   const path = Str.replace(/^#/, "")(hash)
   if (path === "" || path === "/") return { _tag: "Attention" }
   if (path === "/runs") return { _tag: "Runs" }
+  if (path === "/cluster") return { _tag: "Cluster" }
   const run = runPath.exec(path)
   if (run?.[1] !== undefined) return { _tag: "Run", id: decodeURIComponent(run[1]) }
 

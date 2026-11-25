@@ -3,7 +3,7 @@ import { SqliteClient } from "@effect/sql-sqlite-bun"
 import { Clock, Context, Duration, Effect, Layer, Predicate, Redacted, Schema, String as Str } from "effect"
 import { Snowflake } from "effect/cluster"
 import { SqlClient } from "effect/sql"
-import { MessageRow, ReplyRow, type Storage } from "./Rows.ts"
+import { LockRow, MessageRow, ReplyRow, RunnerRow, type Storage } from "./Rows.ts"
 
 export class ClusterRepoError extends Schema.TaggedError<ClusterRepoError, { readonly brand: unique symbol }>()(
   "ClusterRepoError",
@@ -22,6 +22,8 @@ export class ClusterRepoError extends Schema.TaggedError<ClusterRepoError, { rea
 const Bit = Schema.Union([Schema.Boolean, Schema.Literals([0, 1])])
 
 const StoredMessage = Schema.Struct({ ...MessageRow.fields, processed: Bit })
+
+const StoredRunner = Schema.Struct({ ...RunnerRow.fields, healthy: Bit })
 
 const toMessage = (row: typeof StoredMessage.Type): MessageRow => ({
   ...row,
@@ -51,6 +53,8 @@ export class ClusterRepo extends Context.Service<
         const repliesTable = `${prefix}_replies`
         const decodeMessages = Schema.decodeUnknownEffect(Schema.Array(StoredMessage))
         const decodeReplies = Schema.decodeUnknownEffect(Schema.Array(ReplyRow))
+        const decodeRunners = Schema.decodeUnknownEffect(Schema.Array(StoredRunner))
+        const decodeLocks = Schema.decodeUnknownEffect(Schema.Array(LockRow))
 
         const window =
           options?.recent === undefined ? undefined : Duration.toMillis(Duration.fromInputUnsafe(options.recent))
@@ -76,7 +80,7 @@ export class ClusterRepo extends Context.Service<
           sql`
           SELECT CAST(m.id AS TEXT) AS "id", CAST(m.request_id AS TEXT) AS "requestId", m.entity_type AS "entityType",
             m.entity_id AS "entityId", m.tag, m.payload, m.processed,
-            CAST(m.deliver_at AS DOUBLE PRECISION) AS "deliverAt"
+            CAST(m.deliver_at AS DOUBLE PRECISION) AS "deliverAt", m.shard_id AS "shardId", m.trace_id AS "traceId"
           FROM ${sql(messagesTable)} m
           WHERE ${scope(first)}`.pipe(
             Effect.flatMap(decodeMessages),
@@ -111,9 +115,32 @@ export class ClusterRepo extends Context.Service<
           return yield* Effect.all({ messages: messages(first), replies: replies(first) }, { concurrency: 1 })
         })
 
+        const runners = sql`
+          SELECT address, healthy, CAST(last_heartbeat AS TEXT) AS "lastHeartbeat" FROM ${sql(`${prefix}_runners`)}`.pipe(
+          Effect.flatMap(decodeRunners),
+          Effect.map((rows) => rows.map((row) => ({ ...row, healthy: row.healthy === true || row.healthy === 1 }))),
+          Effect.orElseSucceed((): ReadonlyArray<RunnerRow> => [])
+        )
+
+        const locks = sql`
+          SELECT shard_id AS "shardId", address, CAST(acquired_at AS TEXT) AS "acquiredAt"
+          FROM ${sql(`${prefix}_locks`)}`.pipe(
+          Effect.flatMap(decodeLocks),
+          Effect.orElseSucceed((): ReadonlyArray<LockRow> => [])
+        )
+
+        const stored: Effect.Effect<
+          { readonly messages: ReadonlyArray<MessageRow>; readonly replies: ReadonlyArray<ReplyRow> },
+          ClusterRepoError
+        > = sql
+          .withTransaction(read)
+          .pipe(
+            Effect.catchTag("SqlError", (cause) => Effect.fail(new ClusterRepoError({ table: messagesTable, cause })))
+          )
+
         return ClusterRepo.of({
-          storage: sql.withTransaction(read).pipe(
-            Effect.catchTag("SqlError", (cause) => Effect.fail(new ClusterRepoError({ table: messagesTable, cause }))),
+          storage: Effect.all({ stored, runners, locks }).pipe(
+            Effect.map((found) => ({ ...found.stored, runners: found.runners, locks: found.locks })),
             Effect.withSpan("ClusterRepo.storage")
           )
         })

@@ -8,7 +8,9 @@ export const MessageRow = Schema.Struct({
   tag: Schema.NullOr(Schema.String),
   payload: Schema.NullOr(Schema.String),
   processed: Schema.Boolean,
-  deliverAt: Schema.NullOr(Schema.Finite)
+  deliverAt: Schema.NullOr(Schema.Finite),
+  shardId: Schema.optionalKey(Schema.NullOr(Schema.String)),
+  traceId: Schema.optionalKey(Schema.NullOr(Schema.String))
 })
 
 export type MessageRow = typeof MessageRow.Type
@@ -21,9 +23,27 @@ export const ReplyRow = Schema.Struct({
 
 export type ReplyRow = typeof ReplyRow.Type
 
+export const RunnerRow = Schema.Struct({
+  address: Schema.String,
+  healthy: Schema.Boolean,
+  lastHeartbeat: Schema.String
+})
+
+export type RunnerRow = typeof RunnerRow.Type
+
+export const LockRow = Schema.Struct({
+  shardId: Schema.String,
+  address: Schema.String,
+  acquiredAt: Schema.String
+})
+
+export type LockRow = typeof LockRow.Type
+
 export const Storage = Schema.Struct({
   messages: Schema.Array(MessageRow),
-  replies: Schema.Array(ReplyRow)
+  replies: Schema.Array(ReplyRow),
+  runners: Schema.optionalKey(Schema.Array(RunnerRow)),
+  locks: Schema.optionalKey(Schema.Array(LockRow))
 })
 
 export type Storage = typeof Storage.Type
@@ -62,7 +82,11 @@ export const DeferredPayload = Schema.Struct({ name: Schema.String, exit: Exit }
 
 export const json = <S extends Schema.Constraint>(schema: S) => Schema.fromJsonString(schema)
 
-export const Recording = Schema.Struct({ storage: Storage, now: Schema.Finite })
+export const Recording = Schema.Struct({
+  storage: Storage,
+  now: Schema.Finite,
+  traceUrl: Schema.optionalKey(Schema.String)
+})
 
 export type Recording = typeof Recording.Type
 

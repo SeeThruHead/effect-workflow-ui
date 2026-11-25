@@ -420,6 +420,7 @@ const executionOf = (index: Index, workflow: string, run: MessageRow): Execution
     ...(outcome._tag === "failure" ? { failure: outcome.error } : {}),
     ...(details ? { currentDetails: details } : {}),
     payloads: "raw",
+    ...(run.traceId ? { traceId: run.traceId } : {}),
     groups,
     events: eventsFor(start, groups, status, end)
   }

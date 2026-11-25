@@ -15,6 +15,7 @@ export const sampleRuns: ReadonlyArray<Execution> = [
     input: { orderId: "1795583989", sku: "mug", quantity: 2, card: "flaky" },
     currentDetails: "durable sleep cooling-off, wakes at 2026-11-25T05:21:20.036Z",
     payloads: "decoded",
+    traceId: "f320c45a34593fe08be4d39546545ca4",
     groups: [
       {
         id: "activity:reserve stock",
@@ -199,6 +200,7 @@ export const sampleRuns: ReadonlyArray<Execution> = [
     input: { refundId: "r-77", amount: 240 },
     currentDetails: "waiting on a signal (a DurableDeferred); storage names it only once it arrives",
     payloads: "decoded",
+    traceId: "cd72ad3c8b82db801c74c281d34d6f48",
     groups: [
       {
         id: "activity:check refund",
@@ -257,6 +259,7 @@ export const sampleRuns: ReadonlyArray<Execution> = [
       retryable: false
     },
     payloads: "decoded",
+    traceId: "3c57d699a43e603db2323c526b89650d",
     groups: [
       {
         id: "activity:load ledger",
@@ -319,6 +322,7 @@ export const sampleRuns: ReadonlyArray<Execution> = [
     input: { day: "2026-11-20" },
     result: { orders: 42, revenue: 819 },
     payloads: "decoded",
+    traceId: "35435f01466399148d6d329ed9d80393",
     groups: [
       {
         id: "activity:gather orders",
@@ -414,6 +418,7 @@ export const sampleRuns: ReadonlyArray<Execution> = [
       detail: { _tag: "OrderFailed", orderId: "1003", reason: "the card for order 1003 was declined" }
     },
     payloads: "decoded",
+    traceId: "7553453e72cf62ce9d439406c3971d71",
     groups: [
       {
         id: "activity:reserve stock",
@@ -548,6 +553,7 @@ export const sampleRuns: ReadonlyArray<Execution> = [
     input: { orderId: "1002", sku: "desk", quantity: 1, card: "flaky" },
     result: { orderId: "1002", trackingNumber: "TRK-1002" },
     payloads: "decoded",
+    traceId: "e0e965a76cc1f3b35fa31a07db693352",
     groups: [
       {
         id: "activity:reserve stock",
@@ -803,6 +809,7 @@ export const sampleRuns: ReadonlyArray<Execution> = [
     input: { orderId: "1001", sku: "lamp", quantity: 1, card: "ok" },
     result: { orderId: "1001", trackingNumber: "TRK-1001" },
     payloads: "decoded",
+    traceId: "0d235b8fa25a89554d07bf8910645e2e",
     groups: [
       {
         id: "activity:reserve stock",

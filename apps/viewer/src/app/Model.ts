@@ -4,6 +4,7 @@ import { Schema } from "effect"
 export const Page = Schema.Union([
   Schema.TaggedStruct("Attention", {}),
   Schema.TaggedStruct("Runs", {}),
+  Schema.TaggedStruct("Cluster", {}),
   Schema.TaggedStruct("Run", { id: Schema.String }),
   Schema.TaggedStruct("Missing", { path: Schema.String })
 ])

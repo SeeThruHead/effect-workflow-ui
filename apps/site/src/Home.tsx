@@ -99,6 +99,17 @@ export const HomeView = View.make(
           "A failed run with its compensation step",
           "A declined card: the order failed, and releasing the stock ran as compensation."
         )}
+        <p>
+          <strong>Cluster</strong> shows each entity type's mailbox: how many messages, how many are unprocessed, how
+          many are past due and unread, and what is due next. A past-due message nobody reads is how a stalled storage
+          loop shows itself, so it is flagged at the top. For clusters with several runners it lists each runner,
+          whether it is healthy, the shards it holds, and any shard with messages that no runner holds.
+        </p>
+        {shot(
+          "cluster.png",
+          "The cluster page with mailboxes by entity type",
+          "In the recording, the durable clock whose process died is past due and unread."
+        )}
         {shot("run-phone.png", "A run page on a phone", "The same pages work at phone width.", "phone")}
       </section>
 
@@ -136,6 +147,11 @@ export const HomeView = View.make(
           the runs that started in that window and every run that has not finished, however old; <code>0</code> reads
           everything. <code>CLUSTER_TABLE_PREFIX</code> sets the table prefix if your cluster uses one other than{" "}
           <code>cluster</code>; <code>PORT</code> and <code>HOST</code> set where it listens.
+        </p>
+        <p>
+          Effect stores the trace id of every message. Set <code>VIEWER_TRACE_URL</code> to your tracing tool's URL with{" "}
+          <code>{"{traceId}"}</code> where the id goes (a Grafana Explore or Jaeger link, say) and each run page links
+          to its trace.
         </p>
       </section>
 
@@ -184,10 +200,10 @@ export const HomeView = View.make(
       <section id="status">
         <h2>Status</h2>
         <p>
-          Early, and changing. The first version is the needs-attention page, the run list and the run page. Next:
-          mailboxes and backlog per entity type, runners and shard ownership for multi-runner clusters, links from each
-          step to its trace, reading only recent runs so large clusters stay fast, and actions (interrupt, resume, run
-          again) through your app rather than the tables.
+          Early, and changing. It has the needs-attention page, the run list, the run page with a link to each run's
+          trace, the cluster page with mailboxes and runners, and reads only recent runs plus every run still going.
+          Next: links from each step to its own span, alerts from the needs-attention rules, and actions (interrupt,
+          resume, run again) through your app rather than the tables.
         </p>
       </section>
     </main>

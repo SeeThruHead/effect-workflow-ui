@@ -12,7 +12,8 @@ const styles = stylex.create({
     fontFamily: shape.font,
     color: colors.ink,
     display: "grid",
-    gridTemplateColumns: { default: "220px minmax(0, 1fr)", [narrow]: "minmax(0, 1fr)" }
+    gridTemplateColumns: { default: "220px minmax(0, 1fr)", [narrow]: "minmax(0, 1fr)" },
+    gridTemplateRows: { default: "auto", [narrow]: "auto 1fr" }
   },
   side: {
     position: { default: "relative", [narrow]: "sticky" },

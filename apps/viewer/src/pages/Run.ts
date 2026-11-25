@@ -4,6 +4,7 @@ import {
   type Execution,
   FailurePanel,
   History,
+  LinkButton,
   type HistoryView,
   RunHeader,
   Stack,
@@ -18,6 +19,7 @@ export type RunProps<M> = {
   readonly selected: string
   readonly view: HistoryView
   readonly backHref: string
+  readonly traceHref?: string
   readonly onSelect: (id: string) => M
   readonly onView: (view: HistoryView) => M
   readonly onCopy: M
@@ -36,9 +38,10 @@ const page = <M>(h: HtmlBuilder<M>, run: Execution, props: RunProps<M>): Readonl
     run,
     now: props.now,
     actions: [],
-    extraFacts: [["Payloads", payloads(run)]],
+    extraFacts: [["Payloads", payloads(run)], ...(run.traceId === undefined ? [] : [["Trace", run.traceId] as const])],
     onCopy: () => props.onCopy
   }),
+  ...(props.traceHref === undefined ? [] : [LinkButton(h, { label: "Open this run's trace", href: props.traceHref })]),
   ...(run.failure === undefined ? [] : [FailurePanel(h, { failure: run.failure, onCopy: () => props.onCopy })]),
   Timeline(h, {
     groups: run.groups,

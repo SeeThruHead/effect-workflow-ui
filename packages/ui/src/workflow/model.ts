@@ -105,6 +105,7 @@ export type Execution = {
   readonly result?: unknown
   readonly failure?: Failure
   readonly payloads?: "decoded" | "mismatch" | "raw"
+  readonly traceId?: string
   readonly groups: ReadonlyArray<Group>
   readonly events: ReadonlyArray<WfEvent>
 }
