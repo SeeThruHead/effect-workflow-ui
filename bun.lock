@@ -92,6 +92,7 @@
     },
     "packages/reader": {
       "name": "@effect-workflow/reader",
+      "version": "0.1.0",
       "dependencies": {
         "@effect-workflow/ui": "workspace:*",
         "@effect/sql-pg": "4.1.4",
@@ -101,10 +102,13 @@
       "devDependencies": {
         "@effect/platform-bun": "4.1.4",
         "@effect/tsgo": "0.67.7",
+        "@effect/vitest": "4.1.4",
         "@types/bun": "1.4.4",
+        "@vitest/coverage-istanbul": "5.0.5",
         "oxfmt": "0.75.0",
         "oxlint": "1.91.0",
         "typescript": "7.0.2",
+        "vitest": "5.0.5",
       },
     },
     "packages/ui": {

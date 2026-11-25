@@ -35,9 +35,10 @@ where the ids go; each run page then links to its trace and to the selected step
 sets a table prefix other than `cluster`; `PORT` and `HOST` set where it listens.
 
 The viewer has four pages: needs attention, runs, a run, and the cluster: mailboxes per entity type, past-due
-messages, and runners as live, silent (no heartbeat for 45 seconds; storage can still call a dead runner healthy)
+messages, and runners as live, silent (no heartbeat for 45 seconds; storage can call a dead runner healthy for minutes)
 or unhealthy, with the shards they hold. Shard ownership comes from the shard locks table, which Effect writes only
-when Postgres advisory locks are off.
+when Postgres advisory locks are off. [docs/runner-storage-findings.md](docs/runner-storage-findings.md) explains
+both, with a reproduction.
 
 ### Alerts, still read-only
 
