@@ -6,7 +6,7 @@ with their errors, durable sleeps, signals and compensations.
 
 **Status: early.** It reads two tables and never writes to your cluster. Postgres and SQLite.
 
-- Website and live demo: https://blog.shanekeulen.com/effect-workflow-ui/
+- Website and live demo: https://seethruhead.github.io/effect-workflow-ui/
 - Docker image: `ghcr.io/seethruhead/effect-workflow-ui`
 
 ![Needs attention: two failed runs, an overdue durable sleep and a stuck refund](docs/attention.png)
