@@ -27,8 +27,10 @@ docker run --rm -p 4317:4317 \
 On Postgres every read runs in a `READ ONLY` transaction, and the viewer only needs
 `GRANT SELECT ON cluster_messages, cluster_replies`. For SQLite use `CLUSTER_DATABASE_URL=sqlite:/data/cluster.db`
 and mount the directory that holds the database (not read-only: SQLite in WAL mode needs its `-wal` and `-shm`
-files beside it, even when opened read-only). `CLUSTER_TABLE_PREFIX` sets a table prefix other than `cluster`;
-`PORT` and `HOST` set where it listens.
+files beside it, even when opened read-only). `CLUSTER_RECENT_HOURS` (default 168, a week) keeps reads small on a
+big cluster: it reads runs that started in that window and every run that has not finished, whenever it started;
+`0` reads everything. `CLUSTER_TABLE_PREFIX` sets a table prefix other than `cluster`; `PORT` and `HOST` set where
+it listens.
 
 ### The libraries
 

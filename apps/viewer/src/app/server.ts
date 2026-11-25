@@ -2,19 +2,23 @@ import { ViewerApi, rpcPath } from "@effect-workflow/client"
 import { StorageUnreadable } from "@effect-workflow/reader"
 import { ClusterRepo } from "@effect-workflow/reader/repo"
 import { BunHttpServer, BunRuntime, BunServices } from "@effect/platform-bun"
-import { Clock, Config, Effect, Layer } from "effect"
+import { Clock, Config, Duration, Effect, Layer } from "effect"
 import { HttpRouter, HttpStaticServer } from "effect/http"
 import { RpcSerialization, RpcServer } from "effect/rpc"
 
 const settings = Config.all({
   database: Config.Redacted("CLUSTER_DATABASE_URL"),
   prefix: Config.String("CLUSTER_TABLE_PREFIX").pipe(Config.withDefault("cluster")),
+  recentHours: Config.Number("CLUSTER_RECENT_HOURS").pipe(Config.withDefault(168)),
   port: Config.Port("PORT").pipe(Config.withDefault(4317)),
   host: Config.String("HOST").pipe(Config.withDefault("0.0.0.0")),
   root: Config.String("VIEWER_STATIC_DIR").pipe(
     Config.withDefault(new URL("../../dist/live", import.meta.url).pathname)
   )
 })
+
+const repoOptions = (prefix: string, recentHours: number) =>
+  recentHours > 0 ? { prefix, recent: Duration.hours(recentHours) } : { prefix }
 
 const handlers = ViewerApi.toLayer(
   Effect.gen(function* () {
@@ -34,7 +38,7 @@ const app = Layer.unwrap(
     const config = yield* settings
     const rpc = RpcServer.layerHttp({ group: ViewerApi, path: rpcPath, protocol: "http" }).pipe(
       Layer.provide(handlers),
-      Layer.provide(ClusterRepo.fromUrl(config.database, { prefix: config.prefix })),
+      Layer.provide(ClusterRepo.fromUrl(config.database, repoOptions(config.prefix, config.recentHours))),
       Layer.provide(RpcSerialization.layerJson)
     )
     const files = HttpStaticServer.layer({ root: config.root, spa: true })

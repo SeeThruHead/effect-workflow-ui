@@ -1,6 +1,7 @@
 import { PgClient } from "@effect/sql-pg"
 import { SqliteClient } from "@effect/sql-sqlite-bun"
-import { Context, Effect, Layer, Predicate, Redacted, Schema, String as Str } from "effect"
+import { Clock, Context, Duration, Effect, Layer, Predicate, Redacted, Schema, String as Str } from "effect"
+import { Snowflake } from "effect/cluster"
 import { SqlClient } from "effect/sql"
 import { MessageRow, ReplyRow, type Storage } from "./Rows.ts"
 
@@ -27,7 +28,14 @@ const toMessage = (row: typeof StoredMessage.Type): MessageRow => ({
   processed: row.processed === true || row.processed === 1
 })
 
-export type RepoOptions = { readonly prefix?: string }
+export type RepoOptions = { readonly prefix?: string; readonly recent?: Duration.Input }
+
+export const firstIdAfter = (at: number): string =>
+  String(BigInt(Math.max(0, at - Snowflake.constEpochMillis)) << BigInt(22))
+
+const clockEntity = "Workflow/-/DurableClock"
+
+const complete = '%"_tag":"Complete"%'
 
 export class ClusterRepo extends Context.Service<
   ClusterRepo,
@@ -44,30 +52,64 @@ export class ClusterRepo extends Context.Service<
         const decodeMessages = Schema.decodeUnknownEffect(Schema.Array(StoredMessage))
         const decodeReplies = Schema.decodeUnknownEffect(Schema.Array(ReplyRow))
 
-        const messages = sql`
-          SELECT CAST(id AS TEXT) AS "id", CAST(request_id AS TEXT) AS "requestId", entity_type AS "entityType",
-            entity_id AS "entityId", tag, payload, processed, CAST(deliver_at AS DOUBLE PRECISION) AS "deliverAt"
-          FROM ${sql(messagesTable)}`.pipe(
-          Effect.flatMap(decodeMessages),
-          Effect.mapBoth({
-            onSuccess: (rows) => rows.map(toMessage),
-            onFailure: (cause) => new ClusterRepoError({ table: messagesTable, cause })
-          })
-        )
+        const window =
+          options?.recent === undefined ? undefined : Duration.toMillis(Duration.fromInputUnsafe(options.recent))
 
-        const replies = sql`
+        const inWindow = (first: string) => sql`
+          m.id >= ${sql.literal(first)}
+          OR EXISTS (
+            SELECT 1 FROM ${sql(messagesTable)} r
+            WHERE r.tag = 'run'
+              AND r.entity_id = m.entity_id
+              AND (r.entity_type = m.entity_type OR m.entity_type = ${clockEntity})
+              AND (
+                r.id >= ${sql.literal(first)}
+                OR NOT EXISTS (
+                  SELECT 1 FROM ${sql(repliesTable)} p WHERE p.request_id = r.request_id AND p.payload LIKE ${complete}
+                )
+              )
+          )`
+
+        const scope = (first: string | undefined) => (first === undefined ? sql`1 = 1` : inWindow(first))
+
+        const messages = (first: string | undefined) =>
+          sql`
+          SELECT CAST(m.id AS TEXT) AS "id", CAST(m.request_id AS TEXT) AS "requestId", m.entity_type AS "entityType",
+            m.entity_id AS "entityId", m.tag, m.payload, m.processed,
+            CAST(m.deliver_at AS DOUBLE PRECISION) AS "deliverAt"
+          FROM ${sql(messagesTable)} m
+          WHERE ${scope(first)}`.pipe(
+            Effect.flatMap(decodeMessages),
+            Effect.mapBoth({
+              onSuccess: (rows) => rows.map(toMessage),
+              onFailure: (cause) => new ClusterRepoError({ table: messagesTable, cause })
+            })
+          )
+
+        const replies = (first: string | undefined) =>
+          sql`
           SELECT CAST(id AS TEXT) AS "id", CAST(request_id AS TEXT) AS "requestId", payload
-          FROM ${sql(repliesTable)}`.pipe(
-          Effect.flatMap(decodeReplies),
-          Effect.mapError((cause) => new ClusterRepoError({ table: repliesTable, cause }))
-        )
+          FROM ${sql(repliesTable)}
+          WHERE request_id IN (SELECT m.request_id FROM ${sql(messagesTable)} m WHERE ${scope(first)})`.pipe(
+            Effect.flatMap(decodeReplies),
+            Effect.mapError((cause) => new ClusterRepoError({ table: repliesTable, cause }))
+          )
 
         const readOnly = sql.onDialectOrElse({
           pg: () => sql`SET TRANSACTION READ ONLY`.pipe(Effect.asVoid),
           orElse: () => Effect.void
         })
 
-        const read = Effect.andThen(readOnly, Effect.all({ messages, replies }, { concurrency: 1 }))
+        const firstId = Effect.map(Clock.currentTimeMillis, (now) =>
+          window === undefined ? undefined : firstIdAfter(now - window)
+        )
+
+        const read = Effect.gen(function* () {
+          yield* readOnly
+          const first = yield* firstId
+
+          return yield* Effect.all({ messages: messages(first), replies: replies(first) }, { concurrency: 1 })
+        })
 
         return ClusterRepo.of({
           storage: sql.withTransaction(read).pipe(

@@ -132,7 +132,9 @@ export const HomeView = View.make(
         </p>
         <div markup={code.dockerSqlite} />
         <p>
-          <code>CLUSTER_TABLE_PREFIX</code> sets the table prefix if your cluster uses one other than{" "}
+          <code>CLUSTER_RECENT_HOURS</code> (default 168, a week) keeps reads small on a big cluster: the viewer reads
+          the runs that started in that window and every run that has not finished, however old; <code>0</code> reads
+          everything. <code>CLUSTER_TABLE_PREFIX</code> sets the table prefix if your cluster uses one other than{" "}
           <code>cluster</code>; <code>PORT</code> and <code>HOST</code> set where it listens.
         </p>
       </section>
